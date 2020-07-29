@@ -1,0 +1,25 @@
+.multioss-badge {
+  font-size: 12px;
+  line-height: 30px;
+  width: 30px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.multioss-badge-red {
+  background-color: #c23934 !important;
+}
+
+.multioss-badge-orange {
+  background-color: #ffb75e !important;
+}
+
+.multioss-badge-green {
+  background-color: #04844c !important;
+}
+
+.multioss-badge-gray {
+  background-color: #fbfbfb !important;
+  color: #444444;
+}

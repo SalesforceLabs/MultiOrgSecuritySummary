@@ -1,0 +1,120 @@
+<template>
+  <div class="slds-grid slds-wrap">
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Manage Skills</h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <div class="slds-size--1-of-1">
+            <div class="slds-grid slds-wrap">
+              <div class="slds-size--1-of-1 slds-p-top--small">
+                <div class="slds-grid slds-wrap">
+                  <template if:true={loading}>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <div class="multioss-spinner-container">
+                        <lightning-spinner size="small"></lightning-spinner>
+                      </div>
+                    </div>
+                  </template>
+                  <div class="slds-size--1-of-1">
+                    <template if:false={availableSkills}>
+                      <div class="slds-size--1-of-1 slds-align--absolute-center">
+                        <div class="slds-p-around--medium">
+                          <c-svg-provider svgname="gonefishing" message="There are no Security Skills Configured for your org"></c-svg-provider>
+                        </div>
+                      </div>
+                    </template>
+                    <template if:true={availableSkills}>
+                      <template for:each={availableSkills} for:item="category" for:index="i">
+                        <div class="slds-size--1-of-1 slds-p-around--small" key={category.Type}>
+                          <div class="slds-grid slds-wrap">
+                            <div class="slds-size--1-of-1 slds-m-bottom--x-small">
+                              <div class="slds-text-heading--small slds-p-bottom--x-small">
+                                {category.Type}s
+                              </div>
+                            </div>
+                            <div class="slds-size--1-of-1">
+                              <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                  <tr class="slds-line-height_reset">
+                                    <th class="" scope="col" style="width: 10%;">
+                                      <div class="slds-truncate" title="Course Image"></div>
+                                    </th>
+                                    <th class="" scope="col" style="width: 10%;">
+                                      <div class="slds-truncate" title="Course Image"></div>
+                                    </th>
+                                    <th class="" scope="col" style="width: 20%;">
+                                      <div class="slds-truncate" title="Name">Name</div>
+                                    </th>
+                                    <th class="" scope="col" style="width: 50%;">
+                                      <div class="slds-truncate" title="Description">Description</div>
+                                    </th>
+                                    <th class="" scope="col" style="width: 10%;">
+                                      <div class="slds-truncate" title="Skill Level">Skill Level</div>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <template for:each={category.Values} for:item="skill" for:index="i">
+                                    <tr class="slds-hint-parent" key={skill.Id}>
+                                      <th data-label="Course Logo" scope="row">
+                                        <div title="Action">
+                                          <lightning-input
+                                            type="checkbox-button"
+                                            data-id={skill.Id}
+                                            data-adminid={skill.AdminSkillId}
+                                            label="Add Skill"
+                                            variant="label-hidden"
+                                            checked={skill.Completed}
+                                            onchange={handleSkillChange}
+                                          ></lightning-input>
+                                        </div>
+                                      </th>
+                                      <th data-label="Course Logo" scope="row">
+                                        <div title="Action">
+                                          <img class="slds-align--absolute-center" src={skill.resourceURL} title={skill.Name} style="max-height: 80px;" />
+                                        </div>
+                                      </th>
+                                      <td data-label="Name" class="slds-cell-wrap">
+                                        <div class="slds-wrap" title={skill.multioss__Course_Name__c}>
+                                          {skill.Name}
+                                        </div>
+                                      </td>
+                                      <td data-label="Skill Level" class="slds-cell-wrap">
+                                        <div class="slds-wrap" title={skill.multioss__Description__c}>
+                                          {skill.multioss__Description__c}
+                                        </div>
+                                      </td>
+                                      <td data-label="Description" class="slds-cell-wrap">
+                                        <div class="slds-wrap" title={skill.multioss__Skill_Level__c}>
+                                          {skill.multioss__Skill_Level__c}
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </template>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="slds-modal__footer">
+          <lightning-button label="Close" variant="neutral" onclick={closeModal}></lightning-button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </div>
+</template>

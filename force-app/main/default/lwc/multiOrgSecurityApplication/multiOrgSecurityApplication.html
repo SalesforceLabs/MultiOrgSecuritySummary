@@ -1,0 +1,54 @@
+<template>
+  <div class="slds-grid slds-wrap">
+    <div class="slds-size--1-of-1">
+      <div class="slds-grid slds-wrap">
+        <!-- Page Header -->
+        <div class="slds-size--1-of-1 slds-p-bottom--medium">
+          <div class="slds-page-header">
+            <div class="slds-page-header__row">
+              <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                  <div class="slds-media__figure">
+                    <lightning-icon icon-name="custom:custom77"></lightning-icon>
+                  </div>
+                  <div class="slds-media__body">
+                    <div class="slds-page-header__name">
+                      <div class="slds-page-header__name-title">
+                        <h1>
+                          <span class="slds-page-header__title slds-truncate" title="Recently Viewed">Multi-Org Security Summary</span>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                  <div class="slds-page-header__control">
+                    <lightning-button-group>
+                      <lightning-button label="New Security Task" onclick={newSecurityTask}></lightning-button>
+                      <lightning-button label="View Configuration" onclick={viewConfiguration}></lightning-button>
+                      <lightning-button label="User Guide" onclick={viewGuide}></lightning-button>
+                    </lightning-button-group>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Summary -->
+
+        <!--div class="slds-size--1-of-1 slds-p-bottom--medium">
+                    <c-multi-org-detail-heading current-org-details={currentOrgDetails}></c-multi-org-detail-heading>
+                </div-->
+        <div class="slds-size--1-of-1 slds-p-bottom--medium">
+          <c-multi-org-security-summary></c-multi-org-security-summary>
+        </div>
+      </div>
+    </div>
+  </div>
+  <template if:true={showGuide}>
+    <c-multi-org-guide></c-multi-org-guide>
+  </template>
+</template>

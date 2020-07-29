@@ -1,0 +1,25 @@
+<!--
+ - Created by apaterson on 22/04/2020.
+ -->
+
+<!-- Multi Org Header Row -->
+<template>
+  <div class="slds-grid slds-grid_vertical-align-center">
+    <div class="slds-size_1-of-6">
+      <div class={columnClass}>
+        Click to View
+      </div>
+      <div class="slds-col orgScoreCol" style="text-align: center;">
+        &nbsp;
+      </div>
+    </div>
+    <div class="slds-col slds-size_5-of-6">
+      <div class="slds-grid">
+        <div class="slds-col" style={highRiskStyle}>High Risk</div>
+        <div class="slds-col" style={mediumRiskStyle}>Medium Risk</div>
+        <div class="slds-col" style={lowRiskStyle}>Low Risk</div>
+        <div class="slds-col" style={inRiskStyle}>Informational</div>
+      </div>
+    </div>
+  </div>
+</template>

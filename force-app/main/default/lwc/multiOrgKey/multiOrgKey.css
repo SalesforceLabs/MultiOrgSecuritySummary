@@ -1,0 +1,61 @@
+.multioss-key-label {
+  padding: 2px;
+  margin: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+.multioss-key-item {
+  padding: 2px;
+  margin: 2px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.info_critical {
+  background-color: rgba(201, 199, 197, 1);
+}
+
+.info_warning {
+  background-color: rgba(201, 199, 197, 0.6);
+}
+
+.info_compliant {
+  background-color: rgba(201, 199, 197, 0.2);
+}
+
+.high_critical {
+  background-color: rgba(194, 57, 52, 1);
+}
+
+.high_warning {
+  background-color: rgba(194, 57, 52, 0.6);
+}
+
+.high_compliant {
+  background-color: rgba(194, 57, 52, 0.2);
+}
+
+.medium_critical {
+  background-color: rgba(255, 183, 93, 1);
+}
+
+.medium_warning {
+  background-color: rgba(255, 183, 93, 0.6);
+}
+
+.medium_compliant {
+  background-color: rgba(255, 183, 93, 0.2);
+}
+
+.low_critical {
+  background-color: rgba(4, 132, 75, 1);
+}
+
+.low_warning {
+  background-color: rgba(4, 132, 75, 0.6);
+}
+
+.low_compliant {
+  background-color: rgba(4, 132, 75, 0.2);
+}

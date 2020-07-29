@@ -1,0 +1,168 @@
+<template>
+  <div class="slds-grid slds-wrap">
+    <div class="slds-size--1-of-1">
+      <div class="slds-grid slds-wrap">
+        <div class="slds-size--1-of-1">
+          <div class="slds-grid slds-wrap">
+            <div class="slds-size--1-of-1">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-size--1-of-1 slds-m-bottom--x-small slds-border--bottom">
+                  <div class="slds-text-heading--small slds-p-bottom--x-small">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                      <div class="slds-size--1-of-6">
+                        <div style="margin: auto;">
+                          <div class="slds-align_absolute-center">
+                            <lightning-icon icon-name="utility:date_input" size="large"></lightning-icon>
+                          </div>
+                          <div class="slds-p-top_medium slds-align_absolute-center">
+                            <lightning-formatted-date-time
+                              class="slds-text-heading--small slds-p-left--small"
+                              value={singleHealthCheckDate}
+                              year="numeric"
+                              day="2-digit"
+                              month="long"
+                            ></lightning-formatted-date-time>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-size--5-of-6">
+                        <div class="slds-size--1-of-1">
+                          <div class="slds-grid slds-wrap">
+                            <template for:each={singleHealthCheck} for:item="category">
+                              <!--  <template if:true={category.first}>
+                                                                  <div class="slds-col categorybox" key={category.first}>
+                                                                      <div class="slds-text-heading_small">Risk -></div>
+                                                                  <template for:each={category.ratings} for:item="rating">
+
+                                                                      <div class="ratingbox" key={rating.indx}>
+                                                                          <div class="slds-text-heading_small">{rating.label}</div></div>
+
+                                                                  </template>
+                                                                  </div>
+                                                              </template> -->
+                              <div class="slds-col slds-size--1-of-4" key={category.indx}>
+                                <div class="slds-text-heading_medium slds-align_absolute-center">
+                                  {category.label}
+                                </div>
+                                <template for:each={category.ratings} for:item="rating">
+                                  <div key={rating.indx} class="slds-m-around_x-small slds-box slds-box_x-small slds-media">
+                                    <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+                                      <span class="slds-icon_container slds-icon-utility-knowledge_base">
+                                        <div class="ratingNumber">{rating.risks.length}</div>
+                                      </span>
+                                    </div>
+                                    <div class="slds-media__body slds-border_left slds-p-around_small">
+                                      <h2 class="slds-truncate slds-text-heading_small" title="Share the knowledge">
+                                        {rating.label}
+                                      </h2>
+                                    </div>
+                                  </div>
+                                </template>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-size--1-of-1">
+          <!--div class="slds-size--1-of-1">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-size--1-of-1 slds-border--bottom slds-m-bottom--x-small">
+                                <div class="slds-text-heading--small slds-p-bottom--x-small">
+                                    Health Check Risks
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
+          <div class="slds-grid slds-grid_vertical-reverse">
+            <template for:each={singleHealthCheck} for:item="category">
+              <div key={category.category} class="slds-col slds-size--1-of-1 slds-p-bottom--medium">
+                <div class="slds-grid slds-wrap">
+                  <div class="slds-size--1-of-1 slds-p-bottom--small">
+                    <div class="slds-text-heading--small">
+                      {category.label} Security Settings ({category.allRisks.length})
+                    </div>
+                    <div class="slds-text-body--regular">
+                      {category.description}
+                    </div>
+                  </div>
+                  <div class="slds-size--1-of-1">
+                    <template if:true={category.allRisks}>
+                      <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                          <tr class="slds-line-height_reset">
+                            <th scope="col" style="width: 10%;">
+                              <div class="slds-truncate" title="Status">
+                                Status
+                              </div>
+                            </th>
+                            <th scope="col" style="width: 30%;">
+                              <div class="slds-truncate" title="Setting">
+                                Setting
+                              </div>
+                            </th>
+                            <th scope="col" style="width: 25%;">
+                              <div class="slds-truncate" title="Your Value">
+                                Your Value
+                              </div>
+                            </th>
+                            <th scope="col" style="width: 25%;">
+                              <div class="slds-truncate" title="Standard Value">Standard Value</div>
+                            </th>
+                            <th scope="col" style="width: 10%;"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <template for:each={category.allRisks} for:item="risk">
+                            <tr key={risk.Id} class="slds-hint-parent">
+                              <th data-label="Status" scope="row">
+                                <div class={risk.riskColor} title={risk.riskLabel}>
+                                  {risk.riskLabel}
+                                </div>
+                              </th>
+                              <td data-label="Description" class="slds-cell-wrap slds-wrap">
+                                <div class="slds-wrap" title={risk.multioss__Setting__c}>
+                                  {risk.multioss__Setting__c}
+                                </div>
+                              </td>
+                              <td data-label="Your Value" class="slds-cell-wrap slds-wrap">
+                                <div class="slds-cell-wrap" title={risk.multioss__OrgValue__c}>
+                                  {risk.multioss__OrgValue__c}
+                                </div>
+                              </td>
+                              <td data-label="Standard Value" class="slds-cell-wrap slds-wrap">
+                                <div class="slds-cell-wrap" title={risk.multioss__StandardValue__c}>
+                                  {risk.multioss__StandardValue__c}
+                                </div>
+                              </td>
+                              <td data-label="Action">
+                                <div class="slds-truncate" title="actions">
+                                  <div class="slds-grid--align-end slds-align-middle">
+                                    <lightning-button-menu alternative-text="Show menu" menu-alignment="auto" icon-size="x-small" variant="border">
+                                      <lightning-menu-item value="showDetails" data-id={risk.Id} label="View Details" onclick={showDetails}></lightning-menu-item>
+                                      <lightning-menu-item value="createTask" data-id={risk.Id} label="Create Task" onclick={createTaskSelected}></lightning-menu-item>
+                                    </lightning-button-menu>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </template>
+                        </tbody>
+                      </table>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

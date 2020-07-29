@@ -1,0 +1,45 @@
+.mypopover {
+  position: absolute;
+}
+
+.mypopoverBody {
+  min-width: 300px;
+}
+
+.popoverFooterText {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  color: white;
+}
+
+.popoverFooterHigh {
+  background-color: var(--lwc-colorBackgroundToastError);
+  padding: 4px;
+}
+
+.popoverFooterMedium {
+  background-color: rgb(255, 183, 93); /*internal only var(--lwc-colorBackgroundWarning); */
+  padding: 4px;
+}
+
+.popoverFooterLow {
+  background-color: var(--lwc-colorBackgroundToastSuccess);
+  padding: 4px;
+}
+
+.popoverFooterInfo {
+  background-color: rgb(236, 235, 234);
+  padding: 4px;
+}
+
+.riskheader {
+  width: 100%;
+  background-color: #eeeeee;
+  padding: 4px;
+}
+
+.risktext {
+  width: 100%;
+  padding: 8px;
+}

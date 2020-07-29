@@ -1,0 +1,123 @@
+<template>
+  <div class="slds-grid slds-wrap">
+    <template if:true={firstOrScheduleState}>
+      <div class="slds-size--1-of-1 slds-p-bottom--medium">
+        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
+          <lightning-icon icon-name="utility:warning" size="x-small"></lightning-icon>
+          <h2>
+            Your Security Summary is not currently syncing -
+            <a onclick={openSyncSchedule}> Schedule Security Sync</a>
+          </h2>
+          <div class="slds-notify__close">
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+              </svg>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template if:true={showSecuritySyncModal}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+              <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Schedule Security Sync</h2>
+          </header>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <div class="slds-size--1-of-1">
+              <div class="slds-grid slds-wrap">
+                <template if:true={syncStatusLoading}>
+                  <div class="slds-size--1-of-1 multioss-child-spinner-container">
+                    <lightning-spinner size="small"></lightning-spinner>
+                  </div>
+                </template>
+                <template if:false={syncStatusLoading}>
+                  <div class="slds-size--1-of-1">
+                    <template if:true={showMessage}>
+                      <div class="slds-size--1-of-1">
+                        <div class={uiMessageVariantCSS}>
+                          <div class="slds-grid slds-wrap">
+                            <div class="slds-size--1-of-1">
+                              <div class="slds-grid slds-wrap">
+                                <div class="slds-size--1-of-12 slds-align_absolute-center">
+                                  <lightning-icon
+                                    class="slds-icon slds-icon--small slds-m-right--small slds-col slds-no-flex slds-align--absolute-center"
+                                    icon-name={messageIcon}
+                                    variant={messageIconVariant}
+                                    size="medium"
+                                  ></lightning-icon>
+                                </div>
+                                <div class="slds-size--11-of-12 slds-align-middle">
+                                  <p style="font-size: 0.9rem; font-weight: bold;">
+                                    {messageTitle}
+                                  </p>
+                                  <p style="font-size: 0.9rem;">{messageBody}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                  <template if:true={firstState}>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <div class="slds-text-heading--small">
+                        Sync your first health check
+                      </div>
+                    </div>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <p>Before we schedule the job, lets make sure that your Integration has been configured. Select 'Sync Health Check' to sync your first health check.</p>
+                    </div>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <lightning-button label="Sync Health Check" onclick={runFirstSecurityJob}></lightning-button>
+                    </div>
+                  </template>
+                  <template if:true={scheduleState}>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small slds-p-top--small">
+                      <div class="slds-text-heading--small">
+                        Schedule your Security Health Check Sync
+                      </div>
+                    </div>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <lightning-input type="time" name="time" label="When would you like to schedule the sync" required value="00:00:00.000Z" onchange={handleTimeChange}></lightning-input>
+                    </div>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <lightning-button label="Schedule Security Sync" onclick={scheduleSecuritySync}></lightning-button>
+                    </div>
+                  </template>
+                  <template if:true={completedState}>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small slds-p-top--small">
+                      <div class="slds-text-heading--small">
+                        Manage your Security Health Check Sync
+                      </div>
+                    </div>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <p>
+                        You're currently sync is currently scheduled for:
+                        <lightning-formatted-time class="slds-p-left--xx-small" value={currentCronInTime}></lightning-formatted-time>
+                      </p>
+                    </div>
+                    <div class="slds-size--1-of-1 slds-p-bottom--small">
+                      <lightning-button label="Reschedule" onclick={deleteScheduledJob}></lightning-button>
+                    </div>
+                  </template>
+                </template>
+              </div>
+            </div>
+          </div>
+          <footer class="slds-modal__footer">
+            <lightning-button label="Close" variant="neutral" onclick={closeModal}></lightning-button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+  </div>
+</template>

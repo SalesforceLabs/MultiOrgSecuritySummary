@@ -1,0 +1,48 @@
+.multioss-section-heading {
+  font-weight: bold;
+}
+
+.multioss-callout-number {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.multioss-half-section-border {
+  border-right: 1px solid rgb(221, 219, 218);
+}
+
+.multioss-quarter-section-border {
+  border-right: 1px solid rgb(221, 219, 218);
+}
+
+.multioss-helptext {
+  margin-top: -3px;
+}
+
+.multioss-sync-label {
+  padding-top: 2px;
+}
+
+.multioss-error-text {
+  color: #c23934 !important;
+}
+
+.multioss-warning-text {
+  color: #ffb75e !important;
+}
+
+.multioss-success-text {
+  color: #04844c !important;
+}
+
+.multioss-card-detail-heading {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid rgb(221, 219, 218);
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  padding: 1rem 1rem 0.75rem 1rem;
+  background: rgb(243, 242, 242);
+  background-clip: padding-box;
+}

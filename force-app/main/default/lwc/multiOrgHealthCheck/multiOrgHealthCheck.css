@@ -1,0 +1,16 @@
+.ratingNumber {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.multioss-cell-text-red {
+  color: rgb(194, 57, 52);
+}
+
+.multioss-cell-text-green {
+  color: #04844c;
+}
+
+.multioss-cell-text-orange {
+  color: #ffb75e;
+}

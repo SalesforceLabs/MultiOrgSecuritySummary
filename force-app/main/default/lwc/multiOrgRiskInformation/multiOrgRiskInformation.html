@@ -1,0 +1,14 @@
+<template>
+  <template if:true={riskKeyDisplay}>
+    <ul>
+      <template for:each={urls} for:item="url">
+        <li key={url.unid}>
+          <a onclick={openDocument} data-id={url.url}>{url.name}</a>
+        </li>
+      </template>
+    </ul>
+  </template>
+  <template if:false={riskKeyDisplay}>
+    No relevant help found
+  </template>
+</template>

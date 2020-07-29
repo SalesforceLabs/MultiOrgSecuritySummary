@@ -1,0 +1,107 @@
+<template>
+  <section aria-label="Dialog title" aria-describedby="popover-body-id" class={popoverClass} style={boxClass} role="dialog">
+    <!--button class="slds-button slds-button_icon slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+                title="Close dialog" onclick={closePopover}>
+            <lightning-icon icon-name="utility:close" size="xx-small"></lightning-icon>
+            <div class="slds-assistive-text">Close dialog</div>
+        </button-->
+    <header class="slds-popover__header">
+      <div class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <div class="slds-icon_container slds-icon-utility-warning">
+            <lightning-icon icon-name={iconName} size="x-small" variant={iconColour}></lightning-icon>
+          </div>
+        </div>
+        <div class="slds-media__body">
+          <!--       <h2 class="slds-truncate slds-text-heading_medium" id="dialog-heading-id-2" title="Review warning">Review warning</h2>
+         -->
+          <div class={popoverTitleClass}>{popoverTitleText}</div>
+        </div>
+      </div>
+    </header>
+    <div id="popover-body-id" class="slds-popover__body mypopoverBody">
+      <div class="slds-form">
+        <div class={formElementClass}>
+          <div class="slds-form-element">
+            <div class="slds-form-element__label">Description</div>
+            <div class="slds-form-element__control">
+              <div class="slds-form-element__static">{risk.multioss__Setting__c}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class={formElementClass}>
+          <div class="slds-form-element">
+            <div class="slds-form-element__label">Expected Value</div>
+            <div class="slds-form-element__control">
+              <div class="slds-form-element__static">{risk.multioss__StandardValue__c}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class={formElementClass}>
+          <div class="slds-form-element">
+            <div class="slds-form-element__label">Actual Value</div>
+            <div class="slds-form-element__control">
+              <div class="slds-form-element__static">{risk.multioss__OrgValue__c}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class={formElementClass}>
+          <div class="slds-form-element">
+            <div class="slds-form-element__label">Information Links</div>
+            <div class="slds-form-element__control">
+              <div class="slds-form-element">
+                <c-multi-org-risk-information risk-key={risk.multioss__DurableId__c}></c-multi-org-risk-information>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class={formElementClass}>
+          <div class="slds-form-element">
+            <div class="slds-form-element__label">Actions</div>
+            <div class="slds-form-element__control">
+              <div class="slds-form-element slds-p-bottom--x-small">
+                <button title="Create a security task" class="slds-button slds-button_neutral slds-button_stretch" onclick={createTaskSelected}>
+                  <lightning-icon class="slds-p-right--small" icon-name="utility:task" size="x-small"></lightning-icon>Create Task
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--
+            <div class="riskheader">Description</div>
+
+
+
+                            <div class="risktext">{risk.multioss__Setting__c}</div>
+                            <div class="riskheader">Expected Value</div>
+                            <div class="risktext">{risk.multioss__StandardValue__c}</div>
+                            <div class="riskheader">Actual Value</div>
+                            <div class="risktext">{risk.multioss__OrgValue__c}</div>
+
+                        <div class="riskheader">Information</div>
+                        <div class="risktext">
+                            <c-multi-org-risk-information risk-key={risk.multioss__DurableId__c}></c-multi-org-risk-information>
+
+                        </div>
+                        <div class="riskheader">Actions</div>
+                        <div class="risktext">
+                            <lightning-button onclick={createTaskSelected} variant="base" label="Create Task" title="Create a security task" icon-name="utility:task" class="slds-m-left_x-small"></lightning-button>
+
+
+                        </div>
+                        -->
+    </div>
+
+    <footer class={popoverFooterClass}>
+      <div class="slds-grid slds-grid_vertical-align-center">
+        <div class="popoverFooterText">{popoverFooterText}</div>
+      </div>
+    </footer>
+  </section>
+</template>

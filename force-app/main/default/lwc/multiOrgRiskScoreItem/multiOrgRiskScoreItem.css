@@ -1,0 +1,48 @@
+.multioss-risk {
+  font-size: 28px;
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 3px;
+  height: 0;
+  padding-bottom: 100%;
+  display: inline-block;
+}
+.multioss-risk-highlight {
+  border-radius: 3px;
+  border: solid black 1px;
+  margin: 2px;
+}
+.multioss-risk-no-highlight {
+  border: solid white 1px;
+  margin: 2px;
+}
+.multioss-risk-category-HIGH_RISK {
+  border-color: var(--lwc-colorBorderError);
+  border-width: 2px;
+  background-color: var(--lwc-colorBackgroundToastError);
+}
+.multioss-risk-category-MEDIUM_RISK {
+  border-color: var(--lwc-colorBorderWarning);
+  border-width: 2px;
+  background-color: rgb(255, 183, 93); /*internal only var(--lwc-colorBackgroundWarning); */
+}
+.multioss-risk-category-LOW_RISK {
+  border-color: var(--lwc-colorBorderSuccess);
+  border-width: 2px;
+  background-color: var(--lwc-colorBackgroundToastSuccess);
+}
+.multioss-risk-category-INFORMATIONAL {
+  border-color: rgb(201, 199, 197);
+  background-color: rgb(201, 199, 197); /*var(--lwc-colorBackgroundDark,rgb(236, 235, 234))*/
+}
+.multioss-risk-type-HIGH_RISK {
+  opacity: 1;
+}
+.multioss-risk-type-MEDIUM_RISK {
+  opacity: 0.6;
+}
+.multioss-risk-type-MEETS_STANDARD {
+  opacity: 0.2;
+}

@@ -1,0 +1,16 @@
+.multioss-section-heading {
+  font-weight: bold;
+}
+
+.multioss-callout-number {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.multioss-half-section-border {
+  border-right: 1px solid rgb(221, 219, 218);
+}
+
+.multioss-quarter-section-border {
+  border-right: 1px solid rgb(221, 219, 218);
+}

@@ -1,0 +1,47 @@
+.right {
+  text-align: right;
+}
+
+.multioss-setup-container {
+  height: 400px;
+}
+
+.multioss-field-label {
+  padding: 2px;
+  margin: 2px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.multioss-full-height-div {
+  min-height: 100%;
+}
+
+.multioss-parent-spinner-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 500px;
+}
+
+.multioss-child-spinner-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 250px;
+}
+
+.multioss-heading-spinner-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 174px;
+}
+
+.multioss-datatable-height {
+  min-height: 300px;
+}
+
+.multioss-component-container {
+  min-width: 881px;
+}

@@ -1,0 +1,43 @@
+.orgNameCol {
+  /*remove to see if fixes truncation width:200px; */
+  line-height: 30px;
+  margin: 3px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.orgScoreCol {
+  width: 40px;
+}
+
+.red {
+  border-color: #c23934 !important;
+  border-bottom: solid 2px;
+}
+
+.orange {
+  border-color: #ffb75e !important;
+  border-bottom: solid 2px;
+}
+
+.green {
+  border-color: #04844c !important;
+  border-bottom: solid 2px;
+}
+
+.gray {
+  border-color: #fbfbfb !important;
+  border-bottom: solid 2px;
+}
+
+.multioss-full-height {
+  height: 100% !important;
+}
+
+.multioss-full-width {
+  width: 100% !important;
+}
+
+.multioss-button-width {
+  width: 20px;
+}

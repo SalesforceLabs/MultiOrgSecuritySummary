@@ -1,0 +1,297 @@
+<template>
+  <div class="slds-grid slds-wrap">
+    <div class="slds-size--1-of-1">
+      <div class="slds-grid slds-wrap">
+        <template if:true={showMultiOrgOverview}>
+          <div class="slds-size--1-of-1">
+            <div class="multioss-page-header slds-p-around--small">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-size--1-of-1">
+                  <div class="slds-grid slds-wrap slds-grid_align-spread">
+                    <div class="slds-col">
+                      <div class="slds-page-header__col-title">
+                        <div class="slds-media">
+                          <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                              <div class="slds-page-header__name-title">
+                                <h1>
+                                  <span class="slds-page-header__title slds-wrap" title={label.Current_Security_Status}>{label.Current_Security_Status}</span>
+                                </h1>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slds-size--1-of-1">
+                <div class="slds-grid slds-grid--align-spread">
+                  <div class="slds-col slds-size--1-of-1">
+                    <span class="slds-text-body--regular slds-wrap" title="Current Org">{label.Multi_Org_Heading_Body}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-size--1-of-1 slds-p-bottom--small slds-p-left--small slds-p-right--small">
+            <div class="slds-grid slds-wrap">
+              <div class="slds-size--1-of-1 slds-m-bottom--x-small slds-border--bottom">
+                <div class="slds-text-heading--small slds-p-bottom--x-small">
+                  {label.Multi_Org_Statistics_Title}
+                </div>
+              </div>
+              <div class="slds-size--1-of-1">
+                <div class="slds-grid slds-wrap">
+                  <div class="slds-size--1-of-1">
+                    <div class="slds-grid slds-wrap">
+                      <div class="slds-size--1-of-4 slds-wrap multioss-quarter-section-border">
+                        <div class="slds-text-heading--small slds-text-align--center">
+                          {label.Multi_Org_Statistics_Production}
+                        </div>
+                        <div class="slds-text-heading--small multioss-callout-number slds-text-align--center">
+                          {orgConfiguration.TotalProductionOrgs}
+                        </div>
+                      </div>
+                      <div class="slds-size--1-of-4 slds-wrap multioss-quarter-section-border">
+                        <div class="slds-text-heading--small slds-text-align--center">
+                          {label.Multi_Org_Statistics_Sandbox}
+                        </div>
+                        <div class="slds-text-heading--small multioss-callout-number slds-text-align--center">
+                          {orgConfiguration.TotalSandboxOrgs}
+                        </div>
+                      </div>
+                      <div class="slds-size--1-of-4 slds-wrap multioss-quarter-section-border">
+                        <div class="slds-grid slds-wrap">
+                          <div class="slds-size--1-of-1">
+                            <div class="slds-grid slds-grid_align-center">
+                              <div class="slds-col slds-text-heading--small slds-text-align--center">
+                                {label.Multi_Org_Statistics_Average}
+                              </div>
+                              <div class="slds-col slds-text-align--center multioss-helptext slds-p-left--xx-small">
+                                <lightning-helptext content={label.Multi_Org_Statistics_Average_Helptext}></lightning-helptext>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="slds-size--1-of-1 slds-text-heading--small multioss-callout-number slds-text-align--center">
+                            {orgConfiguration.AverageSecurityScore}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-size--1-of-4 slds-wrap">
+                        <div class="slds-text-heading--small slds-text-align--center">
+                          {label.Multi_Org_Statistics_Tasks}
+                        </div>
+                        <div class="slds-text-heading--small multioss-callout-number slds-text-align--center">
+                          {orgConfiguration.TotalOpenSecurityTasks}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template if:true={singleAndChildOrgSummaryState}>
+          <div class="slds-size--1-of-1">
+            <template if:true={childOrgSummaryState}>
+              <div class="multioss-card-detail-heading">
+                <div class="slds-grid slds-wrap">
+                  <div class="slds-size--1-of-1">
+                    <div class="slds-grid slds-wrap slds-grid_align-spread">
+                      <div class="slds-col">
+                        <div class="slds-page-header__col-title">
+                          <div class="slds-media">
+                            <div class="slds-media__body">
+                              <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                  <h1>
+                                    <span class="slds-page-header__title slds-wrap" title="Current Org">{currentOrgDetails.Name}</span>
+                                  </h1>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-col">
+                        <div class="slds-grid">
+                          <div class="slds-col">
+                            <p class="slds-text-body--regular slds-text-align--right slds-p-right--small multioss-sync-label">
+                              {label.Child_Org_Sync_Status}
+                            </p>
+                          </div>
+                          <div class="slds-col">
+                            <template if:true={currentOrgDetails.Active}>
+                              <span class="slds-badge slds-theme--success">{currentOrgDetails.Status}</span>
+                            </template>
+                            <template if:false={currentOrgDetails.Active}>
+                              <span class="slds-badge slds-theme--error">{currentOrgDetails.Status}</span>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slds-size--1-of-1">
+                    <div class="slds-grid slds-grid--align-spread">
+                      <div class="slds-col slds-size--1-of-2">
+                        <span class="slds-text-body--regular slds-wrap" title="Current Org Description">{currentOrgDetails.Description}</span>
+                      </div>
+                      <div class="slds-col slds-size--1-of-2">
+                        <div class="slds-grid slds-grid--align-end">
+                          <div class="slds-col slds-text-body--small slds-p-right--xx-small">
+                            {label.Child_Org_Status_Last_Updated}
+                          </div>
+                          <div class="slds-col slds-text-body--small">
+                            <lightning-formatted-date-time
+                              value={currentOrgDetails.LatestHealthCheckSync}
+                              year="numeric"
+                              day="2-digit"
+                              month="long"
+                              hour="2-digit"
+                              minute="2-digit"
+                            ></lightning-formatted-date-time>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+            <template if:true={singleOrgSummaryState}>
+              <div class="multioss-card-detail-heading">
+                <div class="slds-grid slds-wrap">
+                  <div class="slds-size--1-of-1">
+                    <div class="slds-grid slds-wrap slds-grid_align-spread">
+                      <div class="slds-col">
+                        <div class="slds-page-header__col-title">
+                          <div class="slds-media">
+                            <div class="slds-media__body">
+                              <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                  <h1>
+                                    <span class="slds-page-header__title slds-wrap" title="Current Org">{currentOrgDetails.Name}</span>
+                                  </h1>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slds-size--1-of-1">
+                  <div class="slds-grid slds-grid--align-spread">
+                    <div class="slds-col slds-size--1-of-2">
+                      <span class="slds-text-body--regular slds-wrap" title="Current Org">{currentOrgDetails.Description}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+          <div class="slds-size--1-of-1">
+            <div class="slds-grid slds-wrap slds-p-around--small">
+              <div class="slds-size--1-of-1 slds-m-bottom--x-small">
+                <div class="slds-text-heading--small">
+                  {label.Single_Org_Details_Title}
+                </div>
+              </div>
+              <div class="slds-size--1-of-1">
+                <div class="slds-grid slds-wrap">
+                  <div class="slds-size--1-of-2 multioss-half-section-border">
+                    <dl class="slds-list_horizontal slds-wrap">
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Org Id">{label.Single_Org_Details_Org_Id}</dt>
+                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.Id}>{currentOrgDetails.Id}</dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">{label.Single_Org_Details_Category}</dt>
+                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.Category}>
+                        {currentOrgDetails.Category}
+                      </dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Data Classification">{label.Single_Org_Details_Classification}</dt>
+                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.DataClassification}>
+                        {currentOrgDetails.DataClassification}
+                      </dd>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Data Classification">{label.Single_Org_Details_Admin}</dt>
+                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.SecurityAdmin}>
+                        {currentOrgDetails.SecurityAdmin}
+                      </dd>
+                    </dl>
+                  </div>
+                  <div class="slds-size--1-of-2">
+                    <div class="slds-grid slds-wrap">
+                      <div class="slds-size--1-of-2 slds-wrap multioss-quarter-section-border">
+                        <div class="slds-text-heading--small slds-text-align--center">
+                          {label.Single_Org_Statistics_Score}
+                        </div>
+                        <div class={totalSecurityScoreStyle}>
+                          {currentOrgDetails.LatestHealthCheckScore}
+                        </div>
+                        <template if:true={currentDateSet}>
+                          <div class="slds-text-body--small slds-text-align--center">
+                            {currentOrgDetails.LatestHealthCheckDate} {label.Single_Org_Statistics_Days_Ago}
+                          </div>
+                        </template>
+                        <template if:false={currentDateSet}>
+                          <div class="slds-text-body--small slds-text-align--center">
+                            {label.Single_Org_Statistics_Days_Ago}
+                          </div>
+                        </template>
+                      </div>
+                      <div class="slds-size--1-of-2 slds-wrap">
+                        <div class="slds-text-heading--small slds-text-align--center">
+                          {label.Single_Org_Statistics_Open_Tasks}
+                        </div>
+                        <p class={openSecurityTaskStyle}>
+                          {numberOfTasks}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template if:true={multiOrgSummaryState}>
+          <div class="slds-size--1-of-1">
+            <div class="multioss-card-detail-heading">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-size--1-of-1">
+                  <div class="slds-grid slds-wrap slds-grid_align-spread">
+                    <div class="slds-col">
+                      <div class="slds-page-header__col-title">
+                        <div class="slds-media">
+                          <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                              <div class="slds-page-header__name-title">
+                                <h1>
+                                  <span class="slds-page-header__title slds-wrap" title={label.Multi_Org_Daily_Security_Summary_Title}>{label.Multi_Org_Daily_Security_Summary_Title}</span>
+                                </h1>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slds-size--1-of-1">
+                <div class="slds-grid slds-grid--align-spread">
+                  <div class="slds-col slds-size--1-of-2">
+                    <span class="slds-text-body--regular slds-wrap" title="Current Org">{label.Multi_Org_Daily_Security_Summary_Description}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>
