@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Generate_Health_Check_Data</name>
+        <label>Generate Health Check Data</label>
+        <locationX>208</locationX>
+        <locationY>50</locationY>
+        <actionName>SecurityHealthCheckSchedulerService</actionName>
+        <actionType>apex</actionType>
+    </actionCalls>
+    <interviewLabel>Generate Health Check Data {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Generate Health Check Data</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Generate_Health_Check_Data</targetReference>
+        </connector>
+        <schedule>
+            <frequency>Once</frequency>
+            <startDate>2020-04-30</startDate>
+            <startTime>12:15:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

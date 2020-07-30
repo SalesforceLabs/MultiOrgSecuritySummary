@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Child_Org_Last_Updated</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Child Org Last Updated</shortDescription>
+        <value>Last Updated:</value>
+    </labels>
+    <labels>
+        <fullName>Child_Org_Overview</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Child Org Overview</shortDescription>
+        <value>Child Org Overview</value>
+    </labels>
+    <labels>
+        <fullName>Child_Org_Status_Last_Updated</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Child Org Status Last Updated:</shortDescription>
+        <value>Last Updated:</value>
+    </labels>
+    <labels>
+        <fullName>Child_Org_Sync_Status</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Child Org Sync Status</shortDescription>
+        <value>Sync Status:</value>
+    </labels>
+    <labels>
+        <fullName>Current_Security_Status</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Heading Title</shortDescription>
+        <value>Current Security Status</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Daily_Security_Summary_Description</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Daily Security Summary Description</shortDescription>
+        <value>Explore the org security settings by date</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Daily_Security_Summary_Title</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Daily Security Summary Title</shortDescription>
+        <value>Daily Security Summary</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Heading_Body</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Heading Body</shortDescription>
+        <value
+    >From the multi-org security summary you can see the status of the security health check across your company&#39;s Salesforce instances. Once configured, your orgs will report on a daily basis, allowing insight into changes made and areas for improvement.</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Overview</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Overview</shortDescription>
+        <value>Multi-Org Overview</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Security_Summary</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Security Summary</shortDescription>
+        <value>Multi-Org Security Summary</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Statistics_Average</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Statistics Average</shortDescription>
+        <value>Average Security Score</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Statistics_Average_Helptext</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Statistics Average Helptext</shortDescription>
+        <value
+    >The average score is calculated based on the last reported health check for each of your orgs.</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Statistics_Production</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Statistics Production</shortDescription>
+        <value>Active Production Orgs</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Statistics_Sandbox</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Statistics Sandbox</shortDescription>
+        <value>Active Sandbox Orgs</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Statistics_Tasks</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Statistics Tasks</shortDescription>
+        <value>Total Open Security Tasks</value>
+    </labels>
+    <labels>
+        <fullName>Multi_Org_Statistics_Title</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Multi-Org Statistics Title</shortDescription>
+        <value>Multi-Org Statistics</value>
+    </labels>
+    <labels>
+        <fullName>New_Security_Task</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New Security Task</shortDescription>
+        <value>New Security Task</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Details_Admin</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Details Admin</shortDescription>
+        <value>Admin:</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Details_Category</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Details Category</shortDescription>
+        <value>Category:</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Details_Classification</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Details Classification</shortDescription>
+        <value>Data Classification:</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Details_Org_Id</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Details Org Id</shortDescription>
+        <value>Org Id:</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Details_Title</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Details Title</shortDescription>
+        <value>Org Details</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Statistics_Days_Ago</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Statistics Days Ago</shortDescription>
+        <value>days ago</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Statistics_Open_Tasks</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Statistics Open Tasks</shortDescription>
+        <value>Open Security Tasks</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Statistics_Org_Not_Synced</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Statistics Org Not Synced</shortDescription>
+        <value>Org Not Synced</value>
+    </labels>
+    <labels>
+        <fullName>Single_Org_Statistics_Score</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Single Org Statistics Score</shortDescription>
+        <value>Current Security Score</value>
+    </labels>
+    <labels>
+        <fullName>View_Configuration</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>View Configuration</shortDescription>
+        <value>View Configuration</value>
+    </labels>
+    <labels>
+        <fullName>View_User_Guide</fullName>
+        <categories>multioss</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>View User Guide</shortDescription>
+        <value>View User Guide</value>
+    </labels>
+</CustomLabels>

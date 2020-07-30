@@ -107,6 +107,8 @@ export default class MultiOrgTaskDetailModal extends LightningElement {
   }
 
   get showRelatedRecords() {
-    return this.taskDetails.multioss__Related_To_Risk__r !== null || this.taskDetails.multioss__Related_To_Org__r !== null;
+    return (
+      this.taskDetails.Related_To_Risk__r !== null || this.taskDetails.Related_To_Org__r !== null
+    );
   }
 }

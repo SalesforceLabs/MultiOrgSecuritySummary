@@ -1,10 +1,26 @@
 <template>
   <div>
-    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open" aria-labelledby="header43" aria-modal="true" aria-describedby="modal-content-id-1">
+    <section
+      role="dialog"
+      tabindex="-1"
+      class="slds-modal slds-fade-in-open"
+      aria-labelledby="header43"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+    >
       <div class="slds-modal__container">
         <header class="slds-modal__header">
-          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={cancelGuideSelected} title="Close">
-            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+          <button
+            class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+            onclick={cancelGuideSelected}
+            title="Close"
+          >
+            <lightning-icon
+              icon-name="utility:close"
+              alternative-text="close"
+              variant="inverse"
+              size="small"
+            ></lightning-icon>
             <span class="slds-assistive-text">Close</span>
           </button>
           <h2 id="header43" class="slds-text-heading_medium">User Guide</h2>
@@ -12,20 +28,33 @@
         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
           <div class="slds-p-around_medium">
             <template if:true={shouldIShowStage1}>
-              <h3 class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader">
+              <h3
+                class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader"
+              >
                 Company-wide Health Check Reporting
               </h3>
               <div class="slds-text-body--regular">
-                <p>The Multi-Org Security Summary App allows you to manage and monitor the security settings across the Salesforce instances within your Company.</p>
+                <p>
+                  The Multi-Org Security Summary App allows you to manage and monitor the security
+                  settings across the Salesforce instances within your Company.
+                </p>
                 <br />
-                <p>It provides a daily summary of the Health status, broken into categories and risk, allowing you to easily visualise areas where improvements are needed.</p>
+                <p>
+                  It provides a daily summary of the Health status, broken into categories and risk,
+                  allowing you to easily visualise areas where improvements are needed.
+                </p>
                 <br />
-                <p>When actions are identified as being required, these can be assigned as tasks to the relevant person and tracked through to completion.</p>
+                <p>
+                  When actions are identified as being required, these can be assigned as tasks to
+                  the relevant person and tracked through to completion.
+                </p>
               </div>
               <div class="slds-align--absolute-center slds-p-top--x-large">
                 <img src={startImage} alt="Multi Org Summary Visualisation" />
               </div>
-              <div class="slds-p-top--x-large slds-align_absolute-center">Using the App can be broken into three easy steps:-</div>
+              <div class="slds-p-top--x-large slds-align_absolute-center">
+                Using the App can be broken into three easy steps:-
+              </div>
               <div class="slds-p-top--medium slds-align_absolute-center">
                 <ul class="slds-list_horizontal slds-has-dividers_right slds-has-block-links_space">
                   <li class="slds-item slds-text-heading_medium">Configure</li>
@@ -35,80 +64,134 @@
               </div>
             </template>
             <template if:true={shouldIShowStage2}>
-              <h3 class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader">
+              <h3
+                class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader"
+              >
                 Configure
               </h3>
               <div class="slds-box slds-box_x-small slds-media">
-                <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+                <div
+                  class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small"
+                >
                   <div class="slds-icon_container slds-icon-utility-knowledge_base">
-                    <lightning-icon icon-name="utility:record_create" class="myicon" title="Create Record"></lightning-icon>
+                    <lightning-icon
+                      icon-name="utility:record_create"
+                      class="myicon"
+                      title="Create Record"
+                    ></lightning-icon>
                   </div>
                 </div>
                 <div class="slds-media__body slds-border_left slds-p-around_small">
-                  <h2 class="slds-truncate slds-text-heading_small" title="Create a Record">Create a record for each child org</h2>
+                  <h2 class="slds-truncate slds-text-heading_small" title="Create a Record">
+                    Create a record for each child org
+                  </h2>
                   <p class="slds-m-top_small">
-                    Use <b>Security Health Check Org</b> to capture the relevant details about the child org. You will need to provide the child org Id and on save will be allocated a security token
-                    to use later.
+                    Use <b>Security Health Check Org</b> to capture the relevant details about the
+                    child org. You will need to provide the child org Id and on save will be
+                    allocated a security token to use later.
                   </p>
                 </div>
               </div>
               <br />
               <div class="slds-box slds-box_x-small slds-media">
-                <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+                <div
+                  class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small"
+                >
                   <div class="slds-icon_container slds-icon-utility-knowledge_base">
-                    <lightning-icon icon-name="utility:package" class="myicon" title="Install Package"></lightning-icon>
+                    <lightning-icon
+                      icon-name="utility:package"
+                      class="myicon"
+                      title="Install Package"
+                    ></lightning-icon>
                   </div>
                 </div>
                 <div class="slds-media__body slds-border_left slds-p-around_small">
-                  <h2 class="slds-truncate slds-text-heading_small" title="Create a Record">Install the package in each child org</h2>
+                  <h2 class="slds-truncate slds-text-heading_small" title="Create a Record">
+                    Install the package in each child org
+                  </h2>
                   <p class="slds-m-top_small">
-                    Each child org will require the Multi-Org Security Summary package to be installed and then the Custom Metadata needs to be configured with the Central Org details and the security
-                    token.
+                    Each child org will require the Multi-Org Security Summary package to be
+                    installed and then the Custom Metadata needs to be configured with the Central
+                    Org details and the security token.
                   </p>
                 </div>
               </div>
               <br />
               <div class="slds-box slds-box_x-small slds-media">
-                <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+                <div
+                  class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small"
+                >
                   <div class="slds-icon_container slds-icon-utility-knowledge_base">
-                    <lightning-icon icon-name="utility:apex" class="myicon" title="Install Package"></lightning-icon>
+                    <lightning-icon
+                      icon-name="utility:apex"
+                      class="myicon"
+                      title="Install Package"
+                    ></lightning-icon>
                   </div>
                 </div>
                 <div class="slds-media__body slds-border_left slds-p-around_small">
-                  <h2 class="slds-truncate slds-text-heading_small" title="Create a Record">Schedule the Security Reporting Service</h2>
+                  <h2 class="slds-truncate slds-text-heading_small" title="Create a Record">
+                    Schedule the Security Reporting Service
+                  </h2>
                   <p class="slds-m-top_small">
-                    Launching the Multi Org Security Summary page will check if the reporting service has been scheduled. If not, it will prompt you and capture the details required to schedule the
-                    daily reporting.
+                    Launching the Multi Org Security Summary page will check if the reporting
+                    service has been scheduled. If not, it will prompt you and capture the details
+                    required to schedule the daily reporting.
                   </p>
                 </div>
               </div>
-              <div class="slds-p-top--x-large slds-align_absolute-center">Once the above is completed, your App is ready to Use!</div>
+              <div class="slds-p-top--x-large slds-align_absolute-center">
+                Once the above is completed, your App is ready to Use!
+              </div>
             </template>
             <template if:true={shouldIShowStage3}>
-              <h3 class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader">
+              <h3
+                class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader"
+              >
                 Analyse
               </h3>
-              <p>Each day you will receive a Security Health Check report from the child orgs, containing the Score and Risk information.</p>
+              <p>
+                Each day you will receive a Security Health Check report from the child orgs,
+                containing the Score and Risk information.
+              </p>
               <img class="slds-p-around_large" src={analyseImage} alt="Analyse the Risks" />
               <p>
-                Review the risks, paying particular attention to risks marked as Critical. The score to the left of the table shows the overall assessment of the risks for that day, with the aim being
-                to get to the score to 100.
+                Review the risks, paying particular attention to risks marked as Critical. The score
+                to the left of the table shows the overall assessment of the risks for that day,
+                with the aim being to get to the score to 100.
               </p>
               <br />
-              <p>Each column shows a particular Risk (e.g. Maximum Invalid Login Attempts) and allows you to quickly see where you have consistency in settings across your orgs.</p>
-              <div class="slds-p-top--x-large slds-align_absolute-center">You can now quickly identify areas of concern and improvement!</div>
+              <p>
+                Each column shows a particular Risk (e.g. Maximum Invalid Login Attempts) and allows
+                you to quickly see where you have consistency in settings across your orgs.
+              </p>
+              <div class="slds-p-top--x-large slds-align_absolute-center">
+                You can now quickly identify areas of concern and improvement!
+              </div>
             </template>
             <template if:true={shouldIShowStage4}>
-              <h3 class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader">
+              <h3
+                class="slds-text-heading--large slds-text-align--center slds-p-bottom--small setupFlowHeader"
+              >
                 Improve
               </h3>
               <p>
-                Use <b>Security Health Check Tasks</b> to identify Org or Risk Information that should be reviewed and improved. Assign these to the relevant administrator and allocate a deadline and
-                priority.
+                Use <b>Security Health Check Tasks</b> to identify Org or Risk Information that
+                should be reviewed and improved. Assign these to the relevant administrator and
+                allocate a deadline and priority.
               </p>
-              <img class="slds-p-around_large" src={improveImage} alt="Use Tasks for Improvements" />
-              <p>Several flow templates are provided for you to implement notifications and extend with business automation according to your requirements.</p>
-              <div class="slds-p-top--x-large slds-align_absolute-center">As your orgs are improved - so is your score!</div>
+              <img
+                class="slds-p-around_large"
+                src={improveImage}
+                alt="Use Tasks for Improvements"
+              />
+              <p>
+                Several flow templates are provided for you to implement notifications and extend
+                with business automation according to your requirements.
+              </p>
+              <div class="slds-p-top--x-large slds-align_absolute-center">
+                As your orgs are improved - so is your score!
+              </div>
             </template>
           </div>
         </div>
@@ -118,7 +201,11 @@
               <div class="slds-col slds-size_1-of-6">
                 <div style="text-align: left;">
                   <template if:false={atTheStart}>
-                    <lightning-button label="Previous" variant="brand" onclick={prevGuideSelected}></lightning-button>
+                    <lightning-button
+                      label="Previous"
+                      variant="brand"
+                      onclick={prevGuideSelected}
+                    ></lightning-button>
                   </template>
                 </div>
               </div>
@@ -132,10 +219,22 @@
               </div>
               <div class="slds-col slds-size_1-of-6">
                 <template if:true={atTheEnd}>
-                  <button class="slds-button slds-button_brand" style="float: right;" onclick={cancelGuideSelected}>Finish</button>
+                  <button
+                    class="slds-button slds-button_brand"
+                    style="float: right;"
+                    onclick={cancelGuideSelected}
+                  >
+                    Finish
+                  </button>
                 </template>
                 <template if:false={atTheEnd}>
-                  <button class="slds-button slds-button_brand" style="float: right;" onclick={nextGuideSelected}>Next</button>
+                  <button
+                    class="slds-button slds-button_brand"
+                    style="float: right;"
+                    onclick={nextGuideSelected}
+                  >
+                    Next
+                  </button>
                 </template>
               </div>
             </div>

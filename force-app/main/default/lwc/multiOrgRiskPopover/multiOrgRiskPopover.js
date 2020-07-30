@@ -16,9 +16,19 @@ export default class MultiOrgRiskPopover extends LightningElement {
       tempItemSize = 140 - this.itemWidth;
     }
 
-    let boxclass = "width:300px;position:absolute; background-color:white;top:" + (this.top - tempItemSize) + "px; left:" + (this.left - 24) + "px";
+    let boxclass =
+      "width:300px;position:absolute; background-color:white;top:" +
+      (this.top - tempItemSize) +
+      "px; left:" +
+      (this.left - 24) +
+      "px";
     if (this.checkFitsToScreen() === false) {
-      boxclass = "width:300px; background-color:white;top:" + (this.top - tempItemSize) + "px; left:" + (this.left - 280) + "px";
+      boxclass =
+        "width:300px; background-color:white;top:" +
+        (this.top - tempItemSize) +
+        "px; left:" +
+        (this.left - 280) +
+        "px";
     }
     return boxclass;
 
@@ -31,11 +41,11 @@ export default class MultiOrgRiskPopover extends LightningElement {
 
     let footerClass = "";
 
-    if (this.risk.multioss__SettingRiskCategory__c === "HIGH_RISK") {
+    if (this.risk.SettingRiskCategory__c === "HIGH_RISK") {
       footerClass = "popoverFooterHigh";
-    } else if (this.risk.multioss__SettingRiskCategory__c === "MEDIUM_RISK") {
+    } else if (this.risk.SettingRiskCategory__c === "MEDIUM_RISK") {
       footerClass = "popoverFooterMedium";
-    } else if (this.risk.multioss__SettingRiskCategory__c === "LOW_RISK") {
+    } else if (this.risk.SettingRiskCategory__c === "LOW_RISK") {
       footerClass = "popoverFooterLow";
     } else {
       footerClass = "popoverFooterInfo";
@@ -47,11 +57,11 @@ export default class MultiOrgRiskPopover extends LightningElement {
   get popoverFooterText() {
     let footerText = "";
 
-    if (this.risk.multioss__SettingRiskCategory__c === "HIGH_RISK") {
+    if (this.risk.SettingRiskCategory__c === "HIGH_RISK") {
       footerText = "High-Risk";
-    } else if (this.risk.multioss__SettingRiskCategory__c === "MEDIUM_RISK") {
+    } else if (this.risk.SettingRiskCategory__c === "MEDIUM_RISK") {
       footerText = "Medium-Risk";
-    } else if (this.risk.multioss__SettingRiskCategory__c === "LOW_RISK") {
+    } else if (this.risk.SettingRiskCategory__c === "LOW_RISK") {
       footerText = "Low-Risk";
     } else {
       footerText = "Informational";
@@ -65,11 +75,11 @@ export default class MultiOrgRiskPopover extends LightningElement {
 
     let titleClass = "";
 
-    if (this.risk.multioss__RiskType__c === "HIGH_RISK") {
+    if (this.risk.RiskType__c === "HIGH_RISK") {
       titleClass = "";
-    } else if (this.risk.multioss__SettingRiskCategory__c === "MEDIUM_RISK") {
+    } else if (this.risk.SettingRiskCategory__c === "MEDIUM_RISK") {
       titleClass = "";
-    } else if (this.risk.multioss__SettingRiskCategory__c === "LOW_RISK") {
+    } else if (this.risk.SettingRiskCategory__c === "LOW_RISK") {
       titleClass = "";
     } else {
       titleClass = "";
@@ -82,9 +92,9 @@ export default class MultiOrgRiskPopover extends LightningElement {
     // HIGH_RISK, MEDIUM_RISK, MEETS_STANDARD
     let titleText = "";
 
-    if (this.risk.multioss__RiskType__c === "HIGH_RISK") {
+    if (this.risk.RiskType__c === "HIGH_RISK") {
       titleText = "Critical";
-    } else if (this.risk.multioss__RiskType__c === "MEDIUM_RISK") {
+    } else if (this.risk.RiskType__c === "MEDIUM_RISK") {
       titleText = "Warning";
     } else {
       titleText = "Compliant";
@@ -129,9 +139,9 @@ export default class MultiOrgRiskPopover extends LightningElement {
   get iconName() {
     let iconName = "utility:success";
 
-    if (this.risk.multioss__RiskType__c === "HIGH_RISK") {
+    if (this.risk.RiskType__c === "HIGH_RISK") {
       iconName = "utility:error";
-    } else if (this.risk.multioss__RiskType__c === "MEDIUM_RISK") {
+    } else if (this.risk.RiskType__c === "MEDIUM_RISK") {
       iconName = "utility:warning";
     }
 
@@ -141,9 +151,9 @@ export default class MultiOrgRiskPopover extends LightningElement {
   get iconColour() {
     let iconClr = "success";
 
-    if (this.risk.multioss__RiskType__c === "HIGH_RISK") {
+    if (this.risk.RiskType__c === "HIGH_RISK") {
       iconClr = "error";
-    } else if (this.risk.multioss__RiskType__c === "MEDIUM_RISK") {
+    } else if (this.risk.RiskType__c === "MEDIUM_RISK") {
       iconClr = "warning";
     }
 

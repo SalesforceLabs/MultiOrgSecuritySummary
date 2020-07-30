@@ -1,4 +1,4 @@
-import { LightningElement, track } from "lwc";
+import { LightningElement } from "lwc";
 import guideImages from "@salesforce/resourceUrl/guideImages";
 
 export default class MultiOrgGuide extends LightningElement {

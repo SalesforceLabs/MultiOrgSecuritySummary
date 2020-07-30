@@ -96,7 +96,7 @@ export default class MultiOrgSummaryScheduler extends LightningElement {
           let status = data.Status;
           console.log("Checking Status: " + status);
 
-          let parentOrg = this.orgConfiguration.OrgConfiguration.multioss__Is_this_the_Central_org__c;
+          let parentOrg = this.orgConfiguration.OrgConfiguration.Is_this_the_Central_org__c;
 
           if (status === "Aborted" || status === "Completed" || status === "Failed") {
             console.log("Aborted Completed or Failed: " + status);
@@ -110,12 +110,24 @@ export default class MultiOrgSummaryScheduler extends LightningElement {
             } else if (parentOrg === true) {
               console.log("Not Completed or Parent");
               this.stopLoading(100);
-              this.showUIMessage(data.Status, data.ExtendedStatus, "error", "utility:error", "inverse");
+              this.showUIMessage(
+                data.Status,
+                data.ExtendedStatus,
+                "error",
+                "utility:error",
+                "inverse"
+              );
               this.firstJobStatus = data;
             } else {
               console.log("Aborted or Failed");
               this.stopLoading(100);
-              this.showUIMessage(data.Status, data.ExtendedStatus, "error", "utility:error", "inverse");
+              this.showUIMessage(
+                data.Status,
+                data.ExtendedStatus,
+                "error",
+                "utility:error",
+                "inverse"
+              );
               this.firstJobStatus = data;
             }
           } else {
@@ -154,7 +166,13 @@ export default class MultiOrgSummaryScheduler extends LightningElement {
         } else {
           this.syncScheduled = false;
           this.stopLoading(100);
-          this.showUIMessage("Error", "Unable to schedule sync", "error", "utility:error", "inverse");
+          this.showUIMessage(
+            "Error",
+            "Unable to schedule sync",
+            "error",
+            "utility:error",
+            "inverse"
+          );
         }
       })
       .catch((error) => {
@@ -178,7 +196,13 @@ export default class MultiOrgSummaryScheduler extends LightningElement {
           this.stopLoading(100);
         } else {
           this.stopLoading(100);
-          this.showUIMessage("Error", "We were unable to cancel the Sync", "error", "utility:error", "inverse");
+          this.showUIMessage(
+            "Error",
+            "We were unable to cancel the Sync",
+            "error",
+            "utility:error",
+            "inverse"
+          );
         }
       })
       .catch((error) => {

@@ -1,9 +1,25 @@
 <template>
-  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+  <section
+    role="dialog"
+    tabindex="-1"
+    aria-labelledby="modal-heading-01"
+    aria-modal="true"
+    aria-describedby="modal-content-id-1"
+    class="slds-modal slds-fade-in-open"
+  >
     <div class="slds-modal__container">
       <header class="slds-modal__header">
-        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-          <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+        <button
+          class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+          title="Close"
+          onclick={closeModal}
+        >
+          <lightning-icon
+            icon-name="utility:close"
+            alternative-text="close"
+            variant="inverse"
+            size="small"
+          ></lightning-icon>
           <span class="slds-assistive-text">Close</span>
         </button>
         <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">View Security Task</h2>
@@ -21,19 +37,23 @@
                 <div class="slds-size--1-of-1 slds-p-bottom--small">
                   <div class="slds-section slds-is-open">
                     <h3 class="slds-section__title slds-theme_shade">
-                      <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Details</span>
+                      <span class="slds-truncate slds-p-horizontal_small" title="Section Title"
+                        >Details</span
+                      >
                     </h3>
                     <div aria-hidden="false" class="slds-section__content">
                       <div class="slds-form">
                         <div class="slds-form__row">
                           <div class="slds-form__item">
-                            <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                            <div
+                              class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                            >
                               <div class="slds-form-element__label">
                                 Subject
                               </div>
                               <div class="slds-form-element__control">
                                 <div class="slds-form-element__static">
-                                  {taskDetails.multioss__Title__c}
+                                  {taskDetails.Title__c}
                                 </div>
                               </div>
                             </div>
@@ -41,13 +61,15 @@
                         </div>
                         <div class="slds-form__row">
                           <div class="slds-form__item">
-                            <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                            <div
+                              class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                            >
                               <div class="slds-form-element__label">
                                 Severity
                               </div>
                               <div class="slds-form-element__control">
                                 <div class="slds-form-element__static">
-                                  {taskDetails.multioss__Severity__c}
+                                  {taskDetails.Severity__c}
                                 </div>
                               </div>
                             </div>
@@ -64,44 +86,52 @@
                         <div class="slds-form">
                           <div class="slds-form__row">
                             <div class="slds-form__item">
-                              <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                              <div
+                                class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                              >
                                 <div class="slds-form-element__label">
                                   Status
                                 </div>
                                 <div class="slds-form-element__control">
                                   <div class="slds-form-element__static">
-                                    {taskDetails.multioss__Status__c}
+                                    {taskDetails.Status__c}
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <template if:true={taskDetails.multioss__Assigned_To__r}>
+                          <template if:true={taskDetails.Assigned_To__r}>
                             <div class="slds-form__row">
                               <div class="slds-form__item">
-                                <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <div
+                                  class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                >
                                   <div class="slds-form-element__label">
                                     Assigned To
                                   </div>
                                   <div class="slds-form-element__control">
                                     <div class="slds-form-element__static">
-                                      {taskDetails.multioss__Assigned_To__r.Name}
+                                      {taskDetails.Assigned_To__r.Name}
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </template>
-                          <template if:true={taskDetails.multioss__Resolution__c}>
+                          <template if:true={taskDetails.Resolution__c}>
                             <div class="slds-form__row">
                               <div class="slds-form__item">
-                                <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <div
+                                  class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                >
                                   <div class="slds-form-element__label">
                                     Resolution
                                   </div>
                                   <div class="slds-form-element__control">
                                     <div class="slds-form-element__static">
-                                      <lightning-formatted-rich-text value={taskDetails.multioss__Resolution__c}></lightning-formatted-rich-text>
+                                      <lightning-formatted-rich-text
+                                        value={taskDetails.Resolution__c}
+                                      ></lightning-formatted-rich-text>
                                     </div>
                                   </div>
                                 </div>
@@ -111,20 +141,22 @@
                         </div>
                       </div>
                     </lightning-tab>
-                    <template if:true={taskDetails.multioss__Related_To_Risk__r}>
+                    <template if:true={taskDetails.Related_To_Risk__r}>
                       <lightning-tab label="Security Details">
                         <div class="slds-grid slds-wrap">
                           <div class="slds-size--1-of-1">
                             <div class="slds-form">
                               <div class="slds-form__row">
                                 <div class="slds-form__item">
-                                  <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                  <div
+                                    class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                  >
                                     <div class="slds-form-element__label">
                                       Security Setting
                                     </div>
                                     <div class="slds-form-element__control">
                                       <div class="slds-form-element__static">
-                                        {taskDetails.multioss__Related_To_Risk__r.multioss__Setting__c}
+                                        {taskDetails.Related_To_Risk__r.Setting__c}
                                       </div>
                                     </div>
                                   </div>
@@ -132,13 +164,15 @@
                               </div>
                               <div class="slds-form__row">
                                 <div class="slds-form__item">
-                                  <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                  <div
+                                    class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                  >
                                     <div class="slds-form-element__label">
                                       Your Value
                                     </div>
                                     <div class="slds-form-element__control">
                                       <div class="slds-form-element__static">
-                                        {taskDetails.multioss__Related_To_Risk__r.multioss__OrgValue__c}
+                                        {taskDetails.Related_To_Risk__r.OrgValue__c}
                                       </div>
                                     </div>
                                   </div>
@@ -146,13 +180,15 @@
                               </div>
                               <div class="slds-form__row">
                                 <div class="slds-form__item">
-                                  <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                  <div
+                                    class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                  >
                                     <div class="slds-form-element__label">
                                       Standard Value
                                     </div>
                                     <div class="slds-form-element__control">
                                       <div class="slds-form-element__static">
-                                        {taskDetails.multioss__Related_To_Risk__r.multioss__Setting__c}
+                                        {taskDetails.Related_To_Risk__r.Setting__c}
                                       </div>
                                     </div>
                                   </div>
@@ -160,13 +196,17 @@
                               </div>
                               <div class="slds-form__row">
                                 <div class="slds-form__item">
-                                  <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                  <div
+                                    class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                  >
                                     <div class="slds-form-element__label">
                                       Information Links
                                     </div>
                                     <div class="slds-form-element__control">
                                       <div class="slds-form-element__static">
-                                        <c-multi-org-risk-information risk-key={taskDetails.multioss__Related_To_Risk__r.multioss__DurableId__c}></c-multi-org-risk-information>
+                                        <c-multi-org-risk-information
+                                          risk-key={taskDetails.Related_To_Risk__r.DurableId__c}
+                                        ></c-multi-org-risk-information>
                                       </div>
                                     </div>
                                   </div>
@@ -177,20 +217,22 @@
                         </div>
                       </lightning-tab>
                     </template>
-                    <template if:true={taskDetails.multioss__Related_To_Org__r}>
+                    <template if:true={taskDetails.Related_To_Org__r}>
                       <lightning-tab label="Org Details">
                         <div class="slds-grid slds-wrap">
                           <div class="slds-size--1-of-1">
                             <div class="slds-form">
                               <div class="slds-form__row">
                                 <div class="slds-form__item">
-                                  <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                  <div
+                                    class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                  >
                                     <div class="slds-form-element__label">
                                       Target Org
                                     </div>
                                     <div class="slds-form-element__control">
                                       <div class="slds-form-element__static">
-                                        {taskDetails.multioss__Related_To_Org__r.Name}
+                                        {taskDetails.Related_To_Org__r.Name}
                                       </div>
                                     </div>
                                   </div>
@@ -198,13 +240,15 @@
                               </div>
                               <div class="slds-form__row">
                                 <div class="slds-form__item">
-                                  <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                  <div
+                                    class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                  >
                                     <div class="slds-form-element__label">
                                       Org Type
                                     </div>
                                     <div class="slds-form-element__control">
                                       <div class="slds-form-element__static">
-                                        {taskDetails.multioss__Related_To_Org__r.multioss__Category__c}
+                                        {taskDetails.Related_To_Org__r.Category__c}
                                       </div>
                                     </div>
                                   </div>
@@ -212,13 +256,15 @@
                               </div>
                               <div class="slds-form__row">
                                 <div class="slds-form__item">
-                                  <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                  <div
+                                    class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                                  >
                                     <div class="slds-form-element__label">
                                       External Contact
                                     </div>
                                     <div class="slds-form-element__control">
                                       <div class="slds-form-element__static">
-                                        {taskDetails.multioss__Related_To_Org__r.multioss__External_Contact_Email__c}
+                                        {taskDetails.Related_To_Org__r.External_Contact_Email__c}
                                       </div>
                                     </div>
                                   </div>
@@ -234,8 +280,19 @@
               </template>
               <template if:true={showUpdateState}>
                 <div class="slds-size--1-of-1">
-                  <lightning-combobox label="Status" class="slds-p-bottom--small" options={caseStatusOptions} value={updatedStatus} onchange={handleStatusChange}></lightning-combobox>
-                  <lightning-input-rich-text label-visible="true" value={updatedResolution} label="Resolution" onchange={handleResolutionChange}></lightning-input-rich-text>
+                  <lightning-combobox
+                    label="Status"
+                    class="slds-p-bottom--small"
+                    options={caseStatusOptions}
+                    value={updatedStatus}
+                    onchange={handleStatusChange}
+                  ></lightning-combobox>
+                  <lightning-input-rich-text
+                    label-visible="true"
+                    value={updatedResolution}
+                    label="Resolution"
+                    onchange={handleResolutionChange}
+                  ></lightning-input-rich-text>
                 </div>
               </template>
             </div>
@@ -244,11 +301,21 @@
       </div>
       <footer class="slds-modal__footer">
         <template if:true={showViewState}>
-          <lightning-button class="slds-p-right--small" label="Close" variant="neutral" onclick={closeModal}></lightning-button>
+          <lightning-button
+            class="slds-p-right--small"
+            label="Close"
+            variant="neutral"
+            onclick={closeModal}
+          ></lightning-button>
           <lightning-button label="Update" variant="brand" onclick={updateTask}></lightning-button>
         </template>
         <template if:true={showUpdateState}>
-          <lightning-button class="slds-p-right--small" label="Cancel" variant="neutral" onclick={cancelUpdate}></lightning-button>
+          <lightning-button
+            class="slds-p-right--small"
+            label="Cancel"
+            variant="neutral"
+            onclick={cancelUpdate}
+          ></lightning-button>
           <lightning-button label="Save" variant="brand" onclick={saveTask}></lightning-button>
         </template>
       </footer>

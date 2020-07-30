@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Image__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula
+  >IMAGE(&#39;/resource/&#39;&amp;Security_Skill__r.Image_Path__c,&quot;Image not found&quot;, -1, 100)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Course Image</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

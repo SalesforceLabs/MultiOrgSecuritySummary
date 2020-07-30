@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Security_Health_Check__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Security Health Check</label>
+    <referenceTo>Security_Health_Check__c</referenceTo>
+    <relationshipLabel>Security Health Check Risks</relationshipLabel>
+    <relationshipName>Security_Health_Check_Risks</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

@@ -1,5 +1,8 @@
 global class SecurityHealthCheckSchedulerService {
-  @InvocableMethod(label='Generate Security Health Check Data' description='Generate the health check data to be sent to the main org')
+  @InvocableMethod(
+    label='Generate Security Health Check Data'
+    description='Generate the health check data to be sent to the main org'
+  )
   global static void generateHealthCheckData() {
     try {
       SecurityHealthCheckService.generateHealthCheckData();

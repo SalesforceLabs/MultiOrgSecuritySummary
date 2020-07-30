@@ -16,18 +16,28 @@
                       <div class="slds-page-header__name-title">
                         <lightning-breadcrumbs>
                           <template if:true={childOrgSummaryState}>
-                            <lightning-breadcrumb label={label.Child_Org_Overview}> </lightning-breadcrumb>
+                            <lightning-breadcrumb label={label.Child_Org_Overview}>
+                            </lightning-breadcrumb>
                           </template>
                           <template if:true={multiOrgSummaryState}>
-                            <lightning-breadcrumb label={label.Multi_Org_Overview}> </lightning-breadcrumb>
+                            <lightning-breadcrumb label={label.Multi_Org_Overview}>
+                            </lightning-breadcrumb>
                           </template>
                           <template if:true={singleOrgSummaryState}>
-                            <lightning-breadcrumb label={label.Multi_Org_Overview} onclick={handleNavigateToSummary}> </lightning-breadcrumb>
+                            <lightning-breadcrumb
+                              label={label.Multi_Org_Overview}
+                              onclick={handleNavigateToSummary}
+                            >
+                            </lightning-breadcrumb>
                             <lightning-breadcrumb label={orgLabel}> </lightning-breadcrumb>
                           </template>
                         </lightning-breadcrumbs>
                         <h1>
-                          <span class="slds-page-header__title slds-truncate" title={label.Multi_Org_Security_Summary}>{label.Multi_Org_Security_Summary}</span>
+                          <span
+                            class="slds-page-header__title slds-truncate"
+                            title={label.Multi_Org_Security_Summary}
+                            >{label.Multi_Org_Security_Summary}</span
+                          >
                         </h1>
                       </div>
                     </div>
@@ -38,11 +48,20 @@
                 <div class="slds-page-header__controls">
                   <div class="slds-page-header__control">
                     <lightning-button-group>
-                      <lightning-button label={label.New_Security_Task} onclick={showCreateTask}></lightning-button>
+                      <lightning-button
+                        label={label.New_Security_Task}
+                        onclick={showCreateTask}
+                      ></lightning-button>
                       <template if:false={setupState}>
-                        <lightning-button label={label.View_Configuration} onclick={showOrgConfiguration}></lightning-button>
+                        <lightning-button
+                          label={label.View_Configuration}
+                          onclick={showOrgConfiguration}
+                        ></lightning-button>
                       </template>
-                      <lightning-button label={label.View_User_Guide} onclick={viewGuide}></lightning-button>
+                      <lightning-button
+                        label={label.View_User_Guide}
+                        onclick={viewGuide}
+                      ></lightning-button>
                     </lightning-button-group>
                   </div>
                 </div>
@@ -51,12 +70,19 @@
           </div>
         </div>
         <div class="slds-size--1-of-1">
-          <c-multi-org-summary-scheduler org-configuration={orgConfiguration}></c-multi-org-summary-scheduler>
+          <c-multi-org-summary-scheduler
+            org-configuration={orgConfiguration}
+          ></c-multi-org-summary-scheduler>
         </div>
         <template if:true={setupState}>
-          <div class="slds-size--1-of-1 slds-card slds-align--absolute-center multioss-setup-container">
+          <div
+            class="slds-size--1-of-1 slds-card slds-align--absolute-center multioss-setup-container"
+          >
             <div class="slds-p-around--medium">
-              <c-svg-provider svgname="gonefishing" message="Follow along with the Setup Guide to get started! Available on the AppExchange"></c-svg-provider>
+              <c-svg-provider
+                svgname="gonefishing"
+                message="Follow along with the Setup Guide to get started! Available on the AppExchange"
+              ></c-svg-provider>
             </div>
           </div>
         </template>
@@ -71,7 +97,10 @@
                 </template>
                 <template if:false={parentLoading}>
                   <div class="slds-size--1-of-1">
-                    <c-multi-org-detail-heading org-configuration={orgConfiguration} component-state="overview-heading"></c-multi-org-detail-heading>
+                    <c-multi-org-detail-heading
+                      org-configuration={orgConfiguration}
+                      component-state="overview-heading"
+                    ></c-multi-org-detail-heading>
                   </div>
                 </template>
               </div>
@@ -101,14 +130,18 @@
                           <div class="slds-size--1-of-1">
                             <template if:true={shouldIShowOrgSummary}>
                               <div class="slds-grid slds-wrap">
-                                <div class="slds-size--1-of-2 slds-p-right--small multioss-full-height-div">
+                                <div
+                                  class="slds-size--1-of-2 slds-p-right--small multioss-full-height-div"
+                                >
                                   <div class="slds-grid slds-wrap">
                                     <div class="slds-size--1-of-1">
                                       <h3 class="slds-text-heading_small slds-m-bottom_x-small">
                                         Filter
                                       </h3>
                                     </div>
-                                    <div class="slds-size--1-of-3 multioss-full-height-div slds-p-right--small">
+                                    <div
+                                      class="slds-size--1-of-3 multioss-full-height-div slds-p-right--small"
+                                    >
                                       <div class="multioss-field-label">Select Date</div>
                                       <lightning-input
                                         type="date"
@@ -120,7 +153,9 @@
                                         onchange={inputChange}
                                       ></lightning-input>
                                     </div>
-                                    <div class="slds-size--1-of-3 slds-p-left--small slds-border--left multioss-full-height-div">
+                                    <div
+                                      class="slds-size--1-of-3 slds-p-left--small slds-border--left multioss-full-height-div"
+                                    >
                                       <div class="multioss-field-label">Select Org Status</div>
                                       <lightning-checkbox-group
                                         name="filterOrgOptions"
@@ -131,7 +166,9 @@
                                         onchange={handleFilterOrgChange}
                                       ></lightning-checkbox-group>
                                     </div>
-                                    <div class="slds-size--1-of-3 slds-p-left--small slds-border--left multioss-full-height-div">
+                                    <div
+                                      class="slds-size--1-of-3 slds-p-left--small slds-border--left multioss-full-height-div"
+                                    >
                                       <div class="multioss-field-label">Select Risk Status</div>
                                       <lightning-checkbox-group
                                         name="filterOptions"
@@ -163,9 +200,13 @@
                             <!-- ****************  output the body table  ******** -->
                             <template if:true={shouldIShowOrgSummary}>
                               <div class="slds-grid slds-wrap">
-                                <div class="slds-size--1-of-1 slds-border--bottom slds-m-bottom--x-small">
+                                <div
+                                  class="slds-size--1-of-1 slds-border--bottom slds-m-bottom--x-small"
+                                >
                                   <div class="slds-grid slds-wrap slds-grid--align-end">
-                                    <div class="slds-size--1-of-3 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-5 slds-p-top--small">
+                                    <div
+                                      class="slds-size--1-of-3 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-5 slds-p-top--small"
+                                    >
                                       <div class="slds-p-bottom--x-small">
                                         <lightning-combobox
                                           name="progress"
@@ -180,18 +221,27 @@
                                 </div>
                                 <div class="slds-size--1-of-1">
                                   <template if:true={shouldIShowNoDataBanner}>
-                                    <c-svg-provider svgname="gonefishing" message="There is no data for the selected date"></c-svg-provider>
+                                    <c-svg-provider
+                                      svgname="gonefishing"
+                                      message="There is no data for the selected date"
+                                    ></c-svg-provider>
                                   </template>
                                   <templaste if:false={shouldIShowNoDataBanner}>
                                     <template if:true={childLoading}>
                                       <div class="multioss-child-spinner-container">
-                                        <lightning-spinner size="medium" alternative-text="loading"></lightning-spinner>
+                                        <lightning-spinner
+                                          size="medium"
+                                          alternative-text="loading"
+                                        ></lightning-spinner>
                                       </div>
                                     </template>
                                     <template if:false={childLoading}>
                                       <template for:each={summaries} for:item="summary">
                                         <template if:true={summary.showHealthCheck}>
-                                          <div class="slds-grid slds-wrap" key={summary.healthCheck.Id}>
+                                          <div
+                                            class="slds-grid slds-wrap"
+                                            key={summary.healthCheck.Id}
+                                          >
                                             <div class="slds-size--1-of-1">
                                               <c-multi-org-org-item
                                                 mode={mode}
@@ -223,24 +273,45 @@
                               <div class="slds-grid slds-wrap">
                                 <div class="slds-size--1-of-1">
                                   <lightning-tabset active-tab-value={tabState} variant="scoped">
-                                    <lightning-tab label="Overview" value="overview" onactive={setActiveTab}>
+                                    <lightning-tab
+                                      label="Overview"
+                                      value="overview"
+                                      onactive={setActiveTab}
+                                    >
                                       <div class="slds-grid slds-wrap">
-                                        <div class="slds-size--1-of-1 slds-border--bottom slds-p-bottom--small slds-m-bottom--small">
+                                        <div
+                                          class="slds-size--1-of-1 slds-border--bottom slds-p-bottom--small slds-m-bottom--small"
+                                        >
                                           <div class="slds-grid slds-wrap">
-                                            <div class="slds-size--1-of-2 slds-p-right--small multioss-full-height-div">
+                                            <div
+                                              class="slds-size--1-of-2 slds-p-right--small multioss-full-height-div"
+                                            >
                                               <div class="slds-grid slds-wrap">
                                                 <div class="slds-size--1-of-1">
-                                                  <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+                                                  <h3
+                                                    class="slds-text-heading_small slds-m-bottom_x-small"
+                                                  >
                                                     Filter
                                                   </h3>
                                                 </div>
-                                                <div class="slds-size--1-of-2 multioss-full-height-div slds-p-right--small">
+                                                <div
+                                                  class="slds-size--1-of-2 multioss-full-height-div slds-p-right--small"
+                                                >
                                                   <div class="multioss-field-label">
                                                     Select No. Of Days
                                                   </div>
-                                                  <lightning-slider label="Number of Days" variant="label-hidden" min="1" max="365" value={maxRows} onchange={maxRowsChanged}></lightning-slider>
+                                                  <lightning-slider
+                                                    label="Number of Days"
+                                                    variant="label-hidden"
+                                                    min="1"
+                                                    max="365"
+                                                    value={maxRows}
+                                                    onchange={maxRowsChanged}
+                                                  ></lightning-slider>
                                                 </div>
-                                                <div class="slds-size--1-of-2 slds-p-left--small slds-border--left multioss-full-height-div">
+                                                <div
+                                                  class="slds-size--1-of-2 slds-p-left--small slds-border--left multioss-full-height-div"
+                                                >
                                                   <div class="multioss-field-label">
                                                     Select Risk Status
                                                   </div>
@@ -255,10 +326,14 @@
                                                 </div>
                                               </div>
                                             </div>
-                                            <div class="slds-size--1-of-2 slds-border--left slds-p-left--small">
+                                            <div
+                                              class="slds-size--1-of-2 slds-border--left slds-p-left--small"
+                                            >
                                               <div class="slds-grid slds-wrap">
                                                 <div class="slds-size--1-of-1">
-                                                  <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+                                                  <h3
+                                                    class="slds-text-heading_small slds-m-bottom_x-small"
+                                                  >
                                                     Key
                                                   </h3>
                                                 </div>
@@ -270,7 +345,11 @@
                                           </div>
                                         </div>
                                         <div class="slds-size--1-of-1">
-                                          <template for:each={summaries} for:item="summary" for:index="i">
+                                          <template
+                                            for:each={summaries}
+                                            for:item="summary"
+                                            for:index="i"
+                                          >
                                             <div class="slds-grid slds-wrap" key={summary.iterator}>
                                               <div class="slds-size--1-of-1">
                                                 <c-multi-org-org-item
@@ -293,11 +372,18 @@
                                         </div>
                                       </div>
                                     </lightning-tab>
-                                    <lightning-tab label="Detail" value="details" onactive={setActiveTab}>
+                                    <lightning-tab
+                                      label="Detail"
+                                      value="details"
+                                      onactive={setActiveTab}
+                                    >
                                       <div class="slds-grid slds-wrap">
                                         <template if:true={healthCheckDetailsLoading}>
                                           <div class="multioss-child-spinner-container">
-                                            <lightning-spinner size="medium" alternative-text="loading"></lightning-spinner>
+                                            <lightning-spinner
+                                              size="medium"
+                                              alternative-text="loading"
+                                            ></lightning-spinner>
                                           </div>
                                         </template>
                                         <template if:false={healthCheckDetailsLoading}>
@@ -332,17 +418,27 @@
                                             </div>
                                           </template>
                                           <template if:false={showSingleHealthCheckDetails}>
-                                            <c-svg-provider svgname="gonefishing" message="No Health Checks details are available for the selected date"></c-svg-provider>
+                                            <c-svg-provider
+                                              svgname="gonefishing"
+                                              message="No Health Checks details are available for the selected date"
+                                            ></c-svg-provider>
                                           </template>
                                         </template>
                                       </div>
                                     </lightning-tab>
-                                    <lightning-tab label="Security Tasks" value="tasks" onactive={setActiveTab}>
+                                    <lightning-tab
+                                      label="Security Tasks"
+                                      value="tasks"
+                                      onactive={setActiveTab}
+                                    >
                                       <div class="slds-grid slds-wrap">
                                         <div class="slds-size--1-of-1">
                                           <template if:true={childLoading}>
                                             <div class="multioss-child-spinner-container">
-                                              <lightning-spinner size="medium" alternative-text="loading"></lightning-spinner>
+                                              <lightning-spinner
+                                                size="medium"
+                                                alternative-text="loading"
+                                              ></lightning-spinner>
                                             </div>
                                           </template>
                                           <template if:false={childLoading}>
@@ -350,72 +446,169 @@
                                               <template if:true={currentTasks}>
                                                 <div class="multioss-datatable-height">
                                                   <div class="slds-size--1-of-1">
-                                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                                    <table
+                                                      class="slds-table slds-table_cell-buffer slds-table_bordered"
+                                                    >
                                                       <thead>
                                                         <tr class="slds-line-height_reset">
-                                                          <th class="slds-cell-wrap" scope="col" style="width: 25%;">
-                                                            <div class="slds-truncate" title="Subject">
+                                                          <th
+                                                            class="slds-cell-wrap"
+                                                            scope="col"
+                                                            style="width: 25%;"
+                                                          >
+                                                            <div
+                                                              class="slds-truncate"
+                                                              title="Subject"
+                                                            >
                                                               Subject
                                                             </div>
                                                           </th>
-                                                          <th class="slds-cell-wrap" scope="col" style="width: 20%;">
-                                                            <div class="slds-truncate" title="Severity">
+                                                          <th
+                                                            class="slds-cell-wrap"
+                                                            scope="col"
+                                                            style="width: 20%;"
+                                                          >
+                                                            <div
+                                                              class="slds-truncate"
+                                                              title="Severity"
+                                                            >
                                                               Severity
                                                             </div>
                                                           </th>
-                                                          <th class="slds-cell-wrap" scope="col" style="width: 15%;">
-                                                            <div class="slds-truncate" title="Status">
+                                                          <th
+                                                            class="slds-cell-wrap"
+                                                            scope="col"
+                                                            style="width: 15%;"
+                                                          >
+                                                            <div
+                                                              class="slds-truncate"
+                                                              title="Status"
+                                                            >
                                                               Status
                                                             </div>
                                                           </th>
-                                                          <th class="slds-cell-wrap" scope="col" style="width: 20%;">
-                                                            <div class="slds-truncate" title="Assigned to">
+                                                          <th
+                                                            class="slds-cell-wrap"
+                                                            scope="col"
+                                                            style="width: 20%;"
+                                                          >
+                                                            <div
+                                                              class="slds-truncate"
+                                                              title="Assigned to"
+                                                            >
                                                               Assigned to
                                                             </div>
                                                           </th>
-                                                          <th class="slds-cell-wrap" scope="col" style="width: 15%;">
+                                                          <th
+                                                            class="slds-cell-wrap"
+                                                            scope="col"
+                                                            style="width: 15%;"
+                                                          >
                                                             <div class="slds-truncate" title="Link">
                                                               Due Date
                                                             </div>
                                                           </th>
-                                                          <th class="slds-cell-wrap" scope="col" style="width: 5%;">
-                                                            <div class="slds-truncate" title="Actions"></div>
+                                                          <th
+                                                            class="slds-cell-wrap"
+                                                            scope="col"
+                                                            style="width: 5%;"
+                                                          >
+                                                            <div
+                                                              class="slds-truncate"
+                                                              title="Actions"
+                                                            ></div>
                                                           </th>
                                                         </tr>
                                                       </thead>
                                                       <tbody>
-                                                        <template for:each={currentTasks} for:item="task" for:index="i">
-                                                          <tr key={task.Id} class="slds-hint-parent">
-                                                            <th class="slds-cell-wrap" data-label="Subject" scope="row">
-                                                              <div class="slds-wrap" title={task.multioss__Title__c}>
-                                                                {task.multioss__Title__c}
+                                                        <template
+                                                          for:each={currentTasks}
+                                                          for:item="task"
+                                                          for:index="i"
+                                                        >
+                                                          <tr
+                                                            key={task.Id}
+                                                            class="slds-hint-parent"
+                                                          >
+                                                            <th
+                                                              class="slds-cell-wrap"
+                                                              data-label="Subject"
+                                                              scope="row"
+                                                            >
+                                                              <div
+                                                                class="slds-wrap"
+                                                                title={task.Title__c}
+                                                              >
+                                                                {task.Title__c}
                                                               </div>
                                                             </th>
-                                                            <td data-label="Name" class="slds-cell-wrap">
-                                                              <div class="slds-wrap" title={task.multioss__Severity__c}>
-                                                                {task.multioss__Severity__c}
+                                                            <td
+                                                              data-label="Name"
+                                                              class="slds-cell-wrap"
+                                                            >
+                                                              <div
+                                                                class="slds-wrap"
+                                                                title={task.Severity__c}
+                                                              >
+                                                                {task.Severity__c}
                                                               </div>
                                                             </td>
-                                                            <td data-label="Skill Level" class="slds-cell-wrap">
-                                                              <div class="slds-wrap" title={task.multioss__Status__c}>
-                                                                {task.multioss__Status__c}
+                                                            <td
+                                                              data-label="Skill Level"
+                                                              class="slds-cell-wrap"
+                                                            >
+                                                              <div
+                                                                class="slds-wrap"
+                                                                title={task.Status__c}
+                                                              >
+                                                                {task.Status__c}
                                                               </div>
                                                             </td>
-                                                            <td data-label="Description" class="slds-cell-wrap">
-                                                              <div class="slds-wrap" title={task.multioss__Assigned_Name__c}>
-                                                                {task.multioss__Assigned_Name__c}
+                                                            <td
+                                                              data-label="Description"
+                                                              class="slds-cell-wrap"
+                                                            >
+                                                              <div
+                                                                class="slds-wrap"
+                                                                title={task.Assigned_Name__c}
+                                                              >
+                                                                {task.Assigned_Name__c}
                                                               </div>
                                                             </td>
-                                                            <td data-label="Description" class="slds-cell-wrap">
-                                                              <div class="slds-wrap" title={task.multioss__Due_Date__c}>
-                                                                <lightning-formatted-date-time value={task.multioss__Due_Date__c} title="Due Date"></lightning-formatted-date-time>
+                                                            <td
+                                                              data-label="Description"
+                                                              class="slds-cell-wrap"
+                                                            >
+                                                              <div
+                                                                class="slds-wrap"
+                                                                title={task.Due_Date__c}
+                                                              >
+                                                                <lightning-formatted-date-time
+                                                                  value={task.Due_Date__c}
+                                                                  title="Due Date"
+                                                                ></lightning-formatted-date-time>
                                                               </div>
                                                             </td>
                                                             <td data-label="Action">
-                                                              <div class="slds-truncate" title="actions">
-                                                                <div class="slds-grid--align-end slds-align-middle">
-                                                                  <lightning-button-menu alternative-text="Show menu" menu-alignment="auto" icon-size="x-small" variant="border">
-                                                                    <lightning-menu-item value="viewDetails" data-id={task.Id} label="View Details" onclick={showTaskDetails}></lightning-menu-item>
+                                                              <div
+                                                                class="slds-truncate"
+                                                                title="actions"
+                                                              >
+                                                                <div
+                                                                  class="slds-grid--align-end slds-align-middle"
+                                                                >
+                                                                  <lightning-button-menu
+                                                                    alternative-text="Show menu"
+                                                                    menu-alignment="auto"
+                                                                    icon-size="x-small"
+                                                                    variant="border"
+                                                                  >
+                                                                    <lightning-menu-item
+                                                                      value="viewDetails"
+                                                                      data-id={task.Id}
+                                                                      label="View Details"
+                                                                      onclick={showTaskDetails}
+                                                                    ></lightning-menu-item>
                                                                     <lightning-menu-item
                                                                       value="markCompleted"
                                                                       data-id={task.Id}
@@ -435,10 +628,17 @@
                                               </template>
                                             </template>
                                             <template if:false={showSecurityHealthCheckTasks}>
-                                              <div class="multioss-datatable-height slds-align--absolute-center">
+                                              <div
+                                                class="multioss-datatable-height slds-align--absolute-center"
+                                              >
                                                 <div class="slds-grid">
-                                                  <div class="slds-size--1-of-1 slds-align--absolute-center">
-                                                    <c-svg-provider svgname="gonefishing" message="No Security Tasks have been created for this org"></c-svg-provider>
+                                                  <div
+                                                    class="slds-size--1-of-1 slds-align--absolute-center"
+                                                  >
+                                                    <c-svg-provider
+                                                      svgname="gonefishing"
+                                                      message="No Security Tasks have been created for this org"
+                                                    ></c-svg-provider>
                                                   </div>
                                                 </div>
                                               </div>
@@ -448,14 +648,23 @@
                                       </div>
                                     </lightning-tab>
                                     <template if:true={singleOrgSummaryState}>
-                                      <lightning-tab label="Security Administrator" value="admin" onactive={setActiveTab}>
+                                      <lightning-tab
+                                        label="Security Administrator"
+                                        value="admin"
+                                        onactive={setActiveTab}
+                                      >
                                         <div class="slds-grid slds-wrap">
                                           <div class="slds-size--1-of-1">
                                             <template if:true={securityAdmin}>
-                                              <c-multi-org-security-user-profile security-admin={securityAdmin}></c-multi-org-security-user-profile>
+                                              <c-multi-org-security-user-profile
+                                                security-admin={securityAdmin}
+                                              ></c-multi-org-security-user-profile>
                                             </template>
                                             <template if:false={securityAdmin}>
-                                              <c-svg-provider svgname="gonefishing" message="There is no security admin for this org"></c-svg-provider>
+                                              <c-svg-provider
+                                                svgname="gonefishing"
+                                                message="There is no security admin for this org"
+                                              ></c-svg-provider>
                                             </template>
                                           </div>
                                         </div>
@@ -469,13 +678,23 @@
                               <div class="slds-grid slds-wrap">
                                 <div class="slds-size--1-of-1">
                                   <template if:true={shouldIShowNoDataBanner}>
-                                    <c-svg-provider svgname="gonefishing" message="There is no data for this org"></c-svg-provider>
+                                    <c-svg-provider
+                                      svgname="gonefishing"
+                                      message="There is no data for this org"
+                                    ></c-svg-provider>
                                   </template>
                                   <template if:false={shouldIShowNoDataBanner}>
                                     <lightning-tabset>
                                       <lightning-tab label="Overview">
-                                        <template for:each={summaries} for:item="summary" for:index="i">
-                                          <div class="slds-grid slds-wrap" key={summary.healthCheck.Id}>
+                                        <template
+                                          for:each={summaries}
+                                          for:item="summary"
+                                          for:index="i"
+                                        >
+                                          <div
+                                            class="slds-grid slds-wrap"
+                                            key={summary.healthCheck.Id}
+                                          >
                                             <div class="slds-size--1-of-1">
                                               <c-multi-org-org-item
                                                 mode={mode}
@@ -510,7 +729,10 @@
                                               ></lightning-formatted-date-time>
                                             </div>
                                           </div>
-                                          <c-multi-org-health-check single-health-check={singleHealthCheck} onselectriskdetailmodal={showRiskModal}></c-multi-org-health-check>
+                                          <c-multi-org-health-check
+                                            single-health-check={singleHealthCheck}
+                                            onselectriskdetailmodal={showRiskModal}
+                                          ></c-multi-org-health-check>
                                         </div>
                                       </lightning-tab>
                                     </lightning-tabset>
@@ -555,14 +777,26 @@
     ></c-multi-org-configuration-details>
   </template>
   <template if:true={showCreateTaskModal}>
-    <c-multi-org-create-task risk-id={taskRiskId} org-id={taskOrgId} onclosecreatetask={closeCreateTask}></c-multi-org-create-task>
+    <c-multi-org-create-task
+      risk-id={taskRiskId}
+      org-id={taskOrgId}
+      onclosecreatetask={closeCreateTask}
+    ></c-multi-org-create-task>
   </template>
   <template if:true={showTaskDetailModal}>
-    <c-multi-org-task-detail-modal task-id={selectedTaskId} onclosetaskdetail={closeTaskDetail}></c-multi-org-task-detail-modal>
+    <c-multi-org-task-detail-modal
+      task-id={selectedTaskId}
+      onclosetaskdetail={closeTaskDetail}
+    ></c-multi-org-task-detail-modal>
   </template>
 
   <template if:true={showRiskDetailModal}>
-    <c-multi-org-risk-detail-modal risk={selectedRisk} org-id={selectedOrgId} oncloseriskdetailmodal={closeRiskDetailModal} oncreatetaskselected={showCreateTask}></c-multi-org-risk-detail-modal>
+    <c-multi-org-risk-detail-modal
+      risk={selectedRisk}
+      org-id={selectedOrgId}
+      oncloseriskdetailmodal={closeRiskDetailModal}
+      oncreatetaskselected={showCreateTask}
+    ></c-multi-org-risk-detail-modal>
   </template>
 
   <template if:true={showGuideModal}>

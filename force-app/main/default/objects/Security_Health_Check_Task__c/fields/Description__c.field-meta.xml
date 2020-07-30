@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The description of the task being created</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The instructions for the user that the task is assigned to</inlineHelpText>
+    <label>Description</label>
+    <length>2000</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

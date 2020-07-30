@@ -12,7 +12,10 @@
                       <div class="slds-size--1-of-6">
                         <div style="margin: auto;">
                           <div class="slds-align_absolute-center">
-                            <lightning-icon icon-name="utility:date_input" size="large"></lightning-icon>
+                            <lightning-icon
+                              icon-name="utility:date_input"
+                              size="large"
+                            ></lightning-icon>
                           </div>
                           <div class="slds-p-top_medium slds-align_absolute-center">
                             <lightning-formatted-date-time
@@ -45,14 +48,26 @@
                                   {category.label}
                                 </div>
                                 <template for:each={category.ratings} for:item="rating">
-                                  <div key={rating.indx} class="slds-m-around_x-small slds-box slds-box_x-small slds-media">
-                                    <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
-                                      <span class="slds-icon_container slds-icon-utility-knowledge_base">
+                                  <div
+                                    key={rating.indx}
+                                    class="slds-m-around_x-small slds-box slds-box_x-small slds-media"
+                                  >
+                                    <div
+                                      class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small"
+                                    >
+                                      <span
+                                        class="slds-icon_container slds-icon-utility-knowledge_base"
+                                      >
                                         <div class="ratingNumber">{rating.risks.length}</div>
                                       </span>
                                     </div>
-                                    <div class="slds-media__body slds-border_left slds-p-around_small">
-                                      <h2 class="slds-truncate slds-text-heading_small" title="Share the knowledge">
+                                    <div
+                                      class="slds-media__body slds-border_left slds-p-around_small"
+                                    >
+                                      <h2
+                                        class="slds-truncate slds-text-heading_small"
+                                        title="Share the knowledge"
+                                      >
                                         {rating.label}
                                       </h2>
                                     </div>
@@ -127,26 +142,41 @@
                                 </div>
                               </th>
                               <td data-label="Description" class="slds-cell-wrap slds-wrap">
-                                <div class="slds-wrap" title={risk.multioss__Setting__c}>
-                                  {risk.multioss__Setting__c}
+                                <div class="slds-wrap" title={risk.Setting__c}>
+                                  {risk.Setting__c}
                                 </div>
                               </td>
                               <td data-label="Your Value" class="slds-cell-wrap slds-wrap">
-                                <div class="slds-cell-wrap" title={risk.multioss__OrgValue__c}>
-                                  {risk.multioss__OrgValue__c}
+                                <div class="slds-cell-wrap" title={risk.OrgValue__c}>
+                                  {risk.OrgValue__c}
                                 </div>
                               </td>
                               <td data-label="Standard Value" class="slds-cell-wrap slds-wrap">
-                                <div class="slds-cell-wrap" title={risk.multioss__StandardValue__c}>
-                                  {risk.multioss__StandardValue__c}
+                                <div class="slds-cell-wrap" title={risk.StandardValue__c}>
+                                  {risk.StandardValue__c}
                                 </div>
                               </td>
                               <td data-label="Action">
                                 <div class="slds-truncate" title="actions">
                                   <div class="slds-grid--align-end slds-align-middle">
-                                    <lightning-button-menu alternative-text="Show menu" menu-alignment="auto" icon-size="x-small" variant="border">
-                                      <lightning-menu-item value="showDetails" data-id={risk.Id} label="View Details" onclick={showDetails}></lightning-menu-item>
-                                      <lightning-menu-item value="createTask" data-id={risk.Id} label="Create Task" onclick={createTaskSelected}></lightning-menu-item>
+                                    <lightning-button-menu
+                                      alternative-text="Show menu"
+                                      menu-alignment="auto"
+                                      icon-size="x-small"
+                                      variant="border"
+                                    >
+                                      <lightning-menu-item
+                                        value="showDetails"
+                                        data-id={risk.Id}
+                                        label="View Details"
+                                        onclick={showDetails}
+                                      ></lightning-menu-item>
+                                      <lightning-menu-item
+                                        value="createTask"
+                                        data-id={risk.Id}
+                                        label="Create Task"
+                                        onclick={createTaskSelected}
+                                      ></lightning-menu-item>
                                     </lightning-button-menu>
                                   </div>
                                 </div>

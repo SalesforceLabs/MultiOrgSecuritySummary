@@ -26,9 +26,9 @@ export default class MultiOrgRiskScoreItem extends LightningElement {
   }
 
   get className() {
-    var riskCategoryClass = "multioss-risk-category-" + this.risk.multioss__SettingRiskCategory__c;
-    var riskType = "multioss-risk-type-" + this.risk.multioss__RiskType__c;
-    var riskClassName = "multioss-risk " + riskCategoryClass + " " + riskType;
+    let riskCategoryClass = "multioss-risk-category-" + this.risk.SettingRiskCategory__c;
+    let riskType = "multioss-risk-type-" + this.risk.RiskType__c;
+    let riskClassName = "multioss-risk " + riskCategoryClass + " " + riskType;
     return riskClassName;
   }
 

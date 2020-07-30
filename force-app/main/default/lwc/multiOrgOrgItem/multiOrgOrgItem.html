@@ -1,5 +1,8 @@
 <template>
-  <div class="slds-grid multioss-full-height slds-grid--vertical-stretch" data-id={summary.org.multioss__Actual_Org_Id__c}>
+  <div
+    class="slds-grid multioss-full-height slds-grid--vertical-stretch"
+    data-id={summary.org.Actual_Org_Id__c}
+  >
     <div class="slds-size--1-of-1">
       <div class="slds-grid slds-grid--vertical-stretch multioss-full-height">
         <div class="slds-size--1-of-6 multioss-full-height">
@@ -9,17 +12,26 @@
                 <div class={columnClass}>
                   <div class="slds-grid slds-grid--vertical-stretch">
                     <template if:true={showScore}>
-                      <div class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle">
-                        <c-multi-org-badge score={summary.healthCheck.multioss__Score__c}></c-multi-org-badge>
+                      <div
+                        class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle"
+                      >
+                        <c-multi-org-badge score={summary.healthCheck.Score__c}></c-multi-org-badge>
                       </div>
                     </template>
                     <template if:false={showScore}>
-                      <div class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle">
+                      <div
+                        class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle"
+                      >
                         <c-multi-org-badge score="N/A"></c-multi-org-badge>
                       </div>
                     </template>
                     <div class="slds-col slds-align-middle slds-truncate">
-                      <a class="slds-p-left--xx-small slds-text-align--left slds-truncate" onclick={selectSingleOrgSummary} data-id={summary.org.Id} title={summary.org.Name}>
+                      <a
+                        class="slds-p-left--xx-small slds-text-align--left slds-truncate"
+                        onclick={selectSingleOrgSummary}
+                        data-id={summary.org.Id}
+                        title={summary.org.Name}
+                      >
                         {summary.org.Name}
                       </a>
                     </div>
@@ -31,21 +43,31 @@
           <template if:true={singleOrgSummaryState}>
             <div class="slds-grid slds-grid--vertical-stretch">
               <div class="slds-size--1-of-1">
-                <div class={columnClass} data-id={summary.healthCheck.multioss__Check_Date__c} onclick={showDateSummary}>
+                <div
+                  class={columnClass}
+                  data-id={summary.healthCheck.Check_Date__c}
+                  onclick={showDateSummary}
+                >
                   <div class="slds-grid slds-grid--vertical-stretch">
                     <template if:true={showScore}>
-                      <div class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle">
-                        <c-multi-org-badge score={summary.healthCheck.multioss__Score__c}></c-multi-org-badge>
+                      <div
+                        class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle"
+                      >
+                        <c-multi-org-badge score={summary.healthCheck.Score__c}></c-multi-org-badge>
                       </div>
                     </template>
                     <template if:false={showScore}>
-                      <div class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle">
+                      <div
+                        class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle"
+                      >
                         <c-multi-org-badge score="N/A"></c-multi-org-badge>
                       </div>
                     </template>
                     <div class="slds-col slds-align-middle slds-truncate">
                       <p class="slds-p-left--xx-small slds-text-align--left slds-truncate">
-                        <lightning-formatted-date-time value={summary.healthCheck.multioss__Check_Date__c}></lightning-formatted-date-time>
+                        <lightning-formatted-date-time
+                          value={summary.healthCheck.Check_Date__c}
+                        ></lightning-formatted-date-time>
                       </p>
                     </div>
                   </div>
@@ -56,21 +78,30 @@
           <template if:true={childOrgSummaryState}>
             <div class="slds-grid slds-grid--vertical-stretch">
               <div class="slds-size--1-of-1">
-                <div class="slds-has-flexi-truncate orgNameCol" data-id={summary.healthCheck.multioss__Check_Date__c}>
+                <div
+                  class="slds-has-flexi-truncate orgNameCol"
+                  data-id={summary.healthCheck.Check_Date__c}
+                >
                   <div class="slds-grid slds-grid--vertical-stretch">
                     <template if:true={showScore}>
-                      <div class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle">
-                        <c-multi-org-badge score={summary.healthCheck.multioss__Score__c}></c-multi-org-badge>
+                      <div
+                        class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle"
+                      >
+                        <c-multi-org-badge score={summary.healthCheck.Score__c}></c-multi-org-badge>
                       </div>
                     </template>
                     <template if:false={showScore}>
-                      <div class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle">
+                      <div
+                        class="slds-size-1-of-2 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6 slds-align-middle"
+                      >
                         <c-multi-org-badge score="N/A"></c-multi-org-badge>
                       </div>
                     </template>
                     <div class="slds-col slds-align-middle slds-truncate">
                       <p class="slds-p-left--xx-small slds-text-align--left slds-truncate">
-                        <lightning-formatted-date-time value={summary.healthCheck.multioss__Check_Date__c}></lightning-formatted-date-time>
+                        <lightning-formatted-date-time
+                          value={summary.healthCheck.Check_Date__c}
+                        ></lightning-formatted-date-time>
                       </p>
                     </div>
                   </div>
@@ -83,12 +114,23 @@
           <div class="slds-grid slds-grid--vertical-stretch slds-align-middle multioss-full-height">
             <div class="slds-col multioss-full-height multioss-full-width">
               <template if:false={doIHaveData}>
-                <div class="slds-p-around_xx-small slds-align_absolute-center multioss-full-height multioss-full-width">No Data Available</div>
+                <div
+                  class="slds-p-around_xx-small slds-align_absolute-center multioss-full-height multioss-full-width"
+                >
+                  No Data Available
+                </div>
               </template>
               <template if:true={doIHaveData}>
                 <div class="slds-col multioss-full-height">
-                  <div class="slds-grid slds-grid--vertical-stretch multioss-full-height" style="width: 100%;">
-                    <template for:each={summary.healthCheck.multioss__Security_Health_Check_Risks__r} for:item="risk" for:index="j">
+                  <div
+                    class="slds-grid slds-grid--vertical-stretch multioss-full-height"
+                    style="width: 100%;"
+                  >
+                    <template
+                      for:each={summary.healthCheck.Security_Health_Check_Risks__r}
+                      for:item="risk"
+                      for:index="j"
+                    >
                       <template if:true={risk.showrisk}>
                         <div class="slds-col slds-align-middle slds-grow-none" key={risk.Id}>
                           <c-multi-org-risk-score-item
@@ -109,16 +151,38 @@
               </template>
             </div>
             <div class="slds-col slds-align-middle multioss-full-height multioss-button-width">
-              <div class="slds-grid slds-grid--align-end slds-grid--vertical-stretch multioss-full-height">
+              <div
+                class="slds-grid slds-grid--align-end slds-grid--vertical-stretch multioss-full-height"
+              >
                 <div class="slds-col slds-align-middle">
-                  <lightning-button-menu alternative-text="Show menu" menu-alignment="auto" icon-size="x-small" variant="border">
+                  <lightning-button-menu
+                    alternative-text="Show menu"
+                    menu-alignment="auto"
+                    icon-size="x-small"
+                    variant="border"
+                  >
                     <template if:true={summary.healthCheck.Id}>
-                      <lightning-menu-item value="viewDetails" data-id={summary.healthCheck.Id} label="View Details" onclick={selectHealthCheckDetail}></lightning-menu-item>
+                      <lightning-menu-item
+                        value="viewDetails"
+                        data-id={summary.healthCheck.Id}
+                        label="View Details"
+                        onclick={selectHealthCheckDetail}
+                      ></lightning-menu-item>
                     </template>
                     <template if:true={showViewSummaryButton}>
-                      <lightning-menu-item value="viewSummary" data-id={summary.org.Id} label="View Summary" onclick={selectSingleOrgSummary}></lightning-menu-item>
+                      <lightning-menu-item
+                        value="viewSummary"
+                        data-id={summary.org.Id}
+                        label="View Summary"
+                        onclick={selectSingleOrgSummary}
+                      ></lightning-menu-item>
                     </template>
-                    <lightning-menu-item value="createTask" data-id={summary.org.Id} label="Create Task" onclick={createTaskSelected}></lightning-menu-item>
+                    <lightning-menu-item
+                      value="createTask"
+                      data-id={summary.org.Id}
+                      label="Create Task"
+                      onclick={createTaskSelected}
+                    ></lightning-menu-item>
                   </lightning-button-menu>
                 </div>
               </div>

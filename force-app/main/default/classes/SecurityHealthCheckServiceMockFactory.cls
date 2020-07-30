@@ -2,7 +2,12 @@
 public with sharing class SecurityHealthCheckServiceMockFactory implements HttpCalloutMock {
   protected List<HttpResponse> orderedResponses = new List<HttpResponse>();
 
-  public SecurityHealthCheckServiceMockFactory(Integer code, String status, String bodyAsString, Map<String, String> headers) {
+  public SecurityHealthCheckServiceMockFactory(
+    Integer code,
+    String status,
+    String bodyAsString,
+    Map<String, String> headers
+  ) {
     HttpResponse res = new HttpResponse();
     res.setStatusCode(code);
     res.setStatus(status);

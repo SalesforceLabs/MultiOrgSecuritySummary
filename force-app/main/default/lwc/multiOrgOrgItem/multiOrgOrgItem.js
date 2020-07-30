@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
 
 export default class MultiOrgOrgItem extends LightningElement {
   @api summary = {};
@@ -50,7 +50,7 @@ export default class MultiOrgOrgItem extends LightningElement {
   }
 
   get doIHaveData() {
-    if (this.summary.healthCheck.multioss__Score__c === -1) {
+    if (this.summary.healthCheck.Score__c === -1) {
       return false;
     }
     return true;
@@ -80,12 +80,12 @@ export default class MultiOrgOrgItem extends LightningElement {
     detail.itemWidth = this.itemSize;
 
     detail.selectedRowId = selectedRowId;
-    detail.orgId = this.summary.healthCheck.multioss__Security_Health_Check_Org__c;
+    detail.orgId = this.summary.healthCheck.Security_Health_Check_Org__c;
     const showDataEvent = new CustomEvent("showdata", { detail: detail });
     this.dispatchEvent(showDataEvent);
   }
 
-  hideData(event) {
+  hideData() {
     this.dispatchEvent(new CustomEvent("hidedata"));
   }
 
@@ -126,13 +126,17 @@ export default class MultiOrgOrgItem extends LightningElement {
 
   selectSingleOrgSummary(event) {
     let selectedOrgId = event.currentTarget.dataset.id;
-    const showOrgSummaryEvent = new CustomEvent("selectsingleorgsummary", { detail: selectedOrgId });
+    const showOrgSummaryEvent = new CustomEvent("selectsingleorgsummary", {
+      detail: selectedOrgId
+    });
     this.dispatchEvent(showOrgSummaryEvent);
   }
 
   selectHealthCheckDetail(event) {
     let selectedHealthCheckId = event.currentTarget.dataset.id;
-    const customEvent = new CustomEvent("selecthealthcheckdetail", { detail: selectedHealthCheckId });
+    const customEvent = new CustomEvent("selecthealthcheckdetail", {
+      detail: selectedHealthCheckId
+    });
     this.dispatchEvent(customEvent);
   }
 
@@ -153,21 +157,6 @@ export default class MultiOrgOrgItem extends LightningElement {
   }
 
   get columnClass() {
-    let scoreClass = "";
-
-    let score = this.summary.healthCheck.multioss__Score__c;
-    try {
-      if (score > 66) {
-        scoreClass = "green";
-      } else if (score > 34) {
-        scoreClass = "orange";
-      } else if (score > 0) {
-        scoreClass = "red";
-      } else {
-        scoreClass = "gray";
-      }
-    } catch (e) {}
-
     return "slds-text-link slds-has-flexi-truncate orgNameCol ";
   }
 
@@ -176,6 +165,6 @@ export default class MultiOrgOrgItem extends LightningElement {
   }
 
   get showScore() {
-    return this.summary.healthCheck.multioss__Score__c >= 0;
+    return this.summary.healthCheck.Score__c >= 0;
   }
 }

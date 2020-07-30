@@ -6,10 +6,15 @@ const healthCheckActions = [
 ];
 
 const healthCheckColumns = [
-  { label: "Status", fieldName: "multioss__RiskType__c", initialWidth: 150, cellAttributes: { class: { fieldName: "riskColor" } } },
-  { label: "Setting", fieldName: "multioss__Setting__c", initialWidth: 300, wrapText: true },
-  { label: "Your Value", fieldName: "multioss__OrgValue__c" },
-  { label: "Standard Value", fieldName: "multioss__StandardValue__c" },
+  {
+    label: "Status",
+    fieldName: "RiskType__c",
+    initialWidth: 150,
+    cellAttributes: { class: { fieldName: "riskColor" } }
+  },
+  { label: "Setting", fieldName: "Setting__c", initialWidth: 300, wrapText: true },
+  { label: "Your Value", fieldName: "OrgValue__c" },
+  { label: "Standard Value", fieldName: "StandardValue__c" },
   {
     type: "action",
     typeAttributes: { rowActions: healthCheckActions }

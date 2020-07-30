@@ -1,7 +1,3 @@
-/**
- * Created by stephan.garcia on 2020-04-26.
- */
-
 import { LightningElement, api } from "lwc";
 
 export default class MultiOrgRiskDetailModal extends LightningElement {

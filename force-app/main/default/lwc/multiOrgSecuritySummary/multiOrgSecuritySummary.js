@@ -36,11 +36,11 @@ const securityTaskActions = [
 ];
 
 const securityTaskColumns = [
-  { label: "Task", fieldName: "multioss__Title__c" },
-  { label: "Severity", fieldName: "multioss__Severity__c" },
-  { label: "Status", fieldName: "multioss__Status__c" },
-  { label: "Assigned to", fieldName: "multioss__Assigned_Name__c" },
-  { label: "Due Date", fieldName: "multioss__Due_Date__c", type: "date-local" },
+  { label: "Task", fieldName: "Title__c" },
+  { label: "Severity", fieldName: "Severity__c" },
+  { label: "Status", fieldName: "Status__c" },
+  { label: "Assigned to", fieldName: "Assigned_Name__c" },
+  { label: "Due Date", fieldName: "Due_Date__c", type: "date-local" },
   {
     type: "action",
     typeAttributes: { rowActions: securityTaskActions }
@@ -147,6 +147,7 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
     this.windowResized();
   }
 
+  // Get the app configuration details
   getConfiguration() {
     getCurrentOrgConfigurationDetails({})
       .then((data) => {
@@ -167,12 +168,9 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
   }
 
   // Sizing Utilities
-
   windowResized(e) {
     let elmnt = this.template.querySelector("div");
-
     let width = 0;
-
     if (elmnt !== null) {
       width = elmnt.clientWidth;
       this.windowSize = width;
@@ -214,7 +212,10 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
     })
       .then((data) => {
         // need to hide again, as date selector causes issues!
-        this.updateModeAndState(data.mode, data.summaries[0].healthCheck.multioss__Security_Health_Check_Org__c);
+        this.updateModeAndState(
+          data.mode,
+          data.summaries[0].healthCheck.Security_Health_Check_Org__c
+        );
         console.log(JSON.stringify(data));
         // set state
         this.applyFilters(data.summaries);
@@ -258,10 +259,10 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
       summaries[isummary].key = isummary;
 
       // Check whether this row (i.e. healthCheck) should be shown
-      var showSummary = false;
+      let showSummary = false;
 
       // check if the summary score is inside values
-      let summaryScore = summary.healthCheck.multioss__Score__c;
+      let summaryScore = summary.healthCheck.Score__c;
 
       if (summaryScore >= 69) {
         showSummary = orgFilters.indexOf("Excellent") != -1;
@@ -273,15 +274,15 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
 
       summary.showHealthCheck = showSummary;
 
-      if (summary.healthCheck != undefined && summary.healthCheck.multioss__Security_Health_Check_Risks__r) {
-        for (let irisk in summary.healthCheck.multioss__Security_Health_Check_Risks__r) {
-          let risk = summary.healthCheck.multioss__Security_Health_Check_Risks__r[irisk];
+      if (summary.healthCheck != undefined && summary.healthCheck.Security_Health_Check_Risks__r) {
+        for (let irisk in summary.healthCheck.Security_Health_Check_Risks__r) {
+          let risk = summary.healthCheck.Security_Health_Check_Risks__r[irisk];
 
-          risk.showrisk = filters.indexOf(risk.multioss__RiskType__c) != -1;
-          summary.healthCheck.multioss__Security_Health_Check_Risks__r[risk] = risk;
+          risk.showrisk = filters.indexOf(risk.RiskType__c) != -1;
+          summary.healthCheck.Security_Health_Check_Risks__r[risk] = risk;
         }
-        if (summary.healthCheck.multioss__Security_Health_Check_Risks__r) {
-          this.numberOfRows = summary.healthCheck.multioss__Security_Health_Check_Risks__r.length;
+        if (summary.healthCheck.Security_Health_Check_Risks__r) {
+          this.numberOfRows = summary.healthCheck.Security_Health_Check_Risks__r.length;
         }
       }
       summaries[isummary] = summary;
@@ -303,8 +304,8 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
       let myvarA = a.org.Name;
       let myvarB = b.org.Name;
       if (key == "score") {
-        myvarA = a.healthCheck.multioss__Score__c;
-        myvarB = b.healthCheck.multioss__Score__c;
+        myvarA = a.healthCheck.Score__c;
+        myvarB = b.healthCheck.Score__c;
       }
 
       const varA = typeof myvarA === "string" ? myvarA.toUpperCase() : myvarA;
@@ -339,7 +340,7 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
     for (let key in this.summaries) {
       if (this.summaries[key].healthCheck.Id === selectedHealthCheckId) {
         this.singleHealthCheck = this.processRisks(JSON.parse(JSON.stringify(this.summaries[key])));
-        this.singleHealthCheckDate = this.summaries[key].healthCheck.multioss__Check_Date__c;
+        this.singleHealthCheckDate = this.summaries[key].healthCheck.Check_Date__c;
         this.singleHealthCheckSelected = true;
         if (this.componentState === "multiOrgSummary") {
           let tempEvent = { detail: this.summaries[key].org.Id };
@@ -359,7 +360,7 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
 
   processRisks(tempHealthCheck) {
     if (tempHealthCheck) {
-      let risks = tempHealthCheck.healthCheck.multioss__Security_Health_Check_Risks__r;
+      let risks = tempHealthCheck.healthCheck.Security_Health_Check_Risks__r;
       let rating = [
         { rating: "HIGH_RISK", label: "Critical", indx: "rating0", risks: [] },
         { rating: "MEDIUM_RISK", label: "Warning", indx: "rating1", risks: [] },
@@ -395,7 +396,8 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
         },
         {
           category: "HIGH_RISK",
-          description: "Critical and Warning Risks in this category are potentially dangerous and should be addressed as soon as possible.",
+          description:
+            "Critical and Warning Risks in this category are potentially dangerous and should be addressed as soon as possible.",
           first: false,
           indx: "cat3",
           label: "High Risk",
@@ -406,8 +408,8 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
 
       for (let riskindex in risks) {
         let risk = risks[riskindex];
-        let riskType = risk.multioss__RiskType__c;
-        let riskCategory = risk.multioss__SettingRiskCategory__c;
+        let riskType = risk.RiskType__c;
+        let riskCategory = risk.SettingRiskCategory__c;
         let riskColor = "multioss-cell-text-green";
         let riskLabel = " Compliant";
         if (riskType == "HIGH_RISK") {
@@ -423,7 +425,10 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
         for (let categoryIndex in categoryA) {
           let ratingA = categoryA[categoryIndex].ratings;
           for (let ratingIndex in ratingA) {
-            if (categoryA[categoryIndex].category == riskCategory && ratingA[ratingIndex].rating == riskType) {
+            if (
+              categoryA[categoryIndex].category == riskCategory &&
+              ratingA[ratingIndex].rating == riskType
+            ) {
               let currentRisksA = categoryA[categoryIndex].ratings[ratingIndex].risks;
               if (currentRisksA == null) {
                 currentRisksA = [];
@@ -432,7 +437,7 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
               currentRisksA.push(risk);
               categoryA[categoryIndex].ratings[ratingIndex].risks = currentRisksA;
 
-              var allRisks = categoryA[categoryIndex].allRisks;
+              let allRisks = categoryA[categoryIndex].allRisks;
               allRisks.push(risk);
             }
           }
@@ -465,16 +470,17 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
         this.stopLoading(500);
       })
       .catch((error) => {
-        //todo: handle error
+        console.log(error.message);
       });
   }
 
   updateImageURLs(data) {
     let adminData = JSON.parse(JSON.stringify(data));
-
     for (let key in adminData.SecuritySkills) {
       for (let i in adminData.SecuritySkills[key].Values) {
-        let resourceURL = this.baseStaticResourceURL + adminData.SecuritySkills[key].Values[i].multioss__Image_Path__c.substring(23);
+        let resourceURL =
+          this.baseStaticResourceURL +
+          adminData.SecuritySkills[key].Values[i].Image_Path__c.substring(23);
 
         adminData.SecuritySkills[key].Values[i].resourceURL = resourceURL;
       }
@@ -483,7 +489,6 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
   }
 
   // Actions
-
   getOrgsByDailySummary() {
     this.mode = "bydate";
     this.updateState("component", "multiOrgSummary");
@@ -543,7 +548,9 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
         this.currentTasks = data;
         this.stopLoading(100);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
   showRiskModal(event) {
@@ -552,11 +559,11 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
     this.showRiskDetailModal = true;
   }
 
-  closeRiskDetailModal(event) {
+  closeRiskDetailModal() {
     this.showRiskDetailModal = false;
   }
 
-  closeGuideModal(event) {
+  closeGuideModal() {
     this.showGuideModal = false;
   }
 
@@ -579,13 +586,13 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
   }
 
   showCreateTask(event) {
-    var details = event.detail;
+    let details = event.detail;
     this.taskRiskId = details.riskId;
     this.taskOrgId = details.orgId;
     this.showCreateTaskModal = true;
   }
 
-  closeCreateTask(event) {
+  closeCreateTask() {
     this.taskRiskId = "";
     this.taskOrgId = "";
     this.showCreateTaskModal = false;
@@ -595,7 +602,7 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
     }
   }
 
-  closeTaskDetail(event) {
+  closeTaskDetail() {
     this.showTaskDetailModal = false;
     this.getRelatedTasks();
     if (this.tabState === "tasks") {
@@ -614,11 +621,11 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
     }, 1000);
   }
 
-  showData(event) {
+  showData() {
     this.hidePopup = false;
   }
 
-  hideData(event) {
+  hideData() {
     if (this.hidePopup === true) {
       this.showPopup = false;
     }
@@ -651,8 +658,8 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
   findRisk(selectedRowId) {
     for (let isummary in this.summaries) {
       let summary = this.summaries[isummary];
-      for (let irisk in summary.healthCheck.multioss__Security_Health_Check_Risks__r) {
-        let risk = summary.healthCheck.multioss__Security_Health_Check_Risks__r[irisk];
+      for (let irisk in summary.healthCheck.Security_Health_Check_Risks__r) {
+        let risk = summary.healthCheck.Security_Health_Check_Risks__r[irisk];
 
         if (risk.Id == selectedRowId) {
           return risk;
@@ -673,7 +680,7 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
       type: "standard__recordPage",
       attributes: {
         recordId: recordId,
-        objectApiName: "multioss__Security_Health_Check_Org__c",
+        objectApiName: "Security_Health_Check_Org__c",
         actionName: "view"
       }
     });
@@ -706,7 +713,9 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
           })
         );
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
   viewGuide() {
@@ -735,7 +744,6 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
   }
 
   // Dynamic Rendering
-
   get orgSortOrderOptions() {
     return [
       { label: "By Name", value: "alpha" },
@@ -831,7 +839,7 @@ export default class MultiOrgSecuritySummary extends NavigationMixin(LightningEl
 
     if (this.currentTasks != null) {
       for (let key in this.currentTasks) {
-        let status = this.currentTasks[key].multioss__Status__c;
+        let status = this.currentTasks[key].Status__c;
 
         if (status === "Created" || status === "In Progress") {
           i++;

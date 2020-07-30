@@ -1,11 +1,13 @@
-/**
- * Created by stephan.garcia on 2020-04-30.
- */
 @isTest
 public with sharing class MultiOrgSecuritySummarySetupUtils_Test {
   @isTest
   public static void testCheckFirstSecurityJobStatus_positive() {
-    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(200, 'OK', 'Success', new Map<String, String>());
+    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(
+      200,
+      'OK',
+      'Success',
+      new Map<String, String>()
+    );
     Test.setMock(HttpCalloutMock.class, mock);
     Test.startTest();
     Datetime dateandtime = MultiOrgSecuritySummarySetupUtilities.getCurrentDateTime();
@@ -15,7 +17,12 @@ public with sharing class MultiOrgSecuritySummarySetupUtils_Test {
     MultiOrgSecuritySummarySetupUtilities.checkFirstSecurityJobStatus(dateandtime);
     Test.stopTest();
 
-    List<CronTrigger> cronTriggers = [SELECT Id, CronExpression FROM CronTrigger WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler' LIMIT 1];
+    List<CronTrigger> cronTriggers = [
+      SELECT Id, CronExpression
+      FROM CronTrigger
+      WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler'
+      LIMIT 1
+    ];
     System.assert(cronTriggers.size() >= 1, 'Expecting a Schedule Batch Job');
   }
 
@@ -25,15 +32,26 @@ public with sharing class MultiOrgSecuritySummarySetupUtils_Test {
     MultiOrgSecuritySummarySetupUtilities.deleteFalsePositiveHealthCheck();
     Test.stopTest();
 
-    List<multioss__Security_Health_Check__c> securityHealthChecks = [SELECT Id FROM multioss__Security_Health_Check__c LIMIT 1];
-    multioss__Security_Health_Check__c securityHealthCheck = (securityHealthChecks.size() == 1) ? securityHealthChecks.get(0) : null;
+    List<Security_Health_Check__c> securityHealthChecks = [
+      SELECT Id
+      FROM Security_Health_Check__c
+      LIMIT 1
+    ];
+    Security_Health_Check__c securityHealthCheck = (securityHealthChecks.size() == 1)
+      ? securityHealthChecks.get(0)
+      : null;
 
     System.assert(securityHealthCheck == null, 'Record should have been deleted');
   }
 
   @isTest
   public static void testGetCurrentSecurityScheduleCron_positive() {
-    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(200, 'OK', 'Success', new Map<String, String>());
+    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(
+      200,
+      'OK',
+      'Success',
+      new Map<String, String>()
+    );
     Test.setMock(HttpCalloutMock.class, mock);
 
     Test.startTest();
@@ -43,13 +61,23 @@ public with sharing class MultiOrgSecuritySummarySetupUtils_Test {
     MultiOrgSecuritySummarySetupUtilities.getCurrentSecurityScheduleCron();
     Test.stopTest();
 
-    List<CronTrigger> cronTriggers = [SELECT Id, CronExpression FROM CronTrigger WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler' LIMIT 1];
+    List<CronTrigger> cronTriggers = [
+      SELECT Id, CronExpression
+      FROM CronTrigger
+      WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler'
+      LIMIT 1
+    ];
     System.assert(cronTriggers.size() >= 1, 'Expecting a Schedule Batch Job');
   }
 
   @isTest
   public static void testScheduleSecuritySync_positive() {
-    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(200, 'OK', 'Success', new Map<String, String>());
+    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(
+      200,
+      'OK',
+      'Success',
+      new Map<String, String>()
+    );
     Test.setMock(HttpCalloutMock.class, mock);
 
     Test.startTest();
@@ -57,13 +85,23 @@ public with sharing class MultiOrgSecuritySummarySetupUtils_Test {
     MultiOrgSecuritySummarySetupUtilities.scheduleSecuritySync(cron);
     Test.stopTest();
 
-    List<CronTrigger> cronTriggers = [SELECT Id, CronExpression FROM CronTrigger WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler' LIMIT 1];
+    List<CronTrigger> cronTriggers = [
+      SELECT Id, CronExpression
+      FROM CronTrigger
+      WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler'
+      LIMIT 1
+    ];
     System.assert(cronTriggers.size() >= 1, 'Expecting a Schedule Batch Job');
   }
 
   @isTest
   public static void testDeleteScheduledJob_positive() {
-    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(200, 'OK', 'Success', new Map<String, String>());
+    SecurityHealthCheckServiceMockFactory mock = new SecurityHealthCheckServiceMockFactory(
+      200,
+      'OK',
+      'Success',
+      new Map<String, String>()
+    );
     Test.setMock(HttpCalloutMock.class, mock);
 
     Test.startTest();
@@ -73,7 +111,12 @@ public with sharing class MultiOrgSecuritySummarySetupUtils_Test {
     MultiOrgSecuritySummarySetupUtilities.deleteScheduledJob();
     Test.stopTest();
 
-    List<CronTrigger> cronTriggers = [SELECT Id, CronExpression FROM CronTrigger WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler' LIMIT 1];
+    List<CronTrigger> cronTriggers = [
+      SELECT Id, CronExpression
+      FROM CronTrigger
+      WHERE CronJobDetail.Name = 'SecurityHealthCheckApexScheduler'
+      LIMIT 1
+    ];
     CronTrigger cronTrigger = (cronTriggers.size() == 1) ? cronTriggers.get(0) : null;
     System.assert(cronTrigger == null, 'Job Should Be Deleted');
   }

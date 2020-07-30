@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_Org_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula
+  >IF( LEN(Organization_Id__c)=15, CASESAFEID(Organization_Id__c), Organization_Id__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText
+  >The Org ID automatically converted to 18 characters [if required]</inlineHelpText>
+    <label>Actual Org Id</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

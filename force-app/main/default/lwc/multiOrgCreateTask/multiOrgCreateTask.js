@@ -14,9 +14,7 @@ export default class MultiOrgCreateTask extends LightningElement {
     this.dispatchEvent(myEvent);
   }
 
-  handleSuccess(event) {
-    // const payload = event.detail;
-    //  console.log(JSON.stringify(payload));
+  handleSuccess() {
     const myToast = new ShowToastEvent({
       title: "Success",
       message: "The Security Task has been created.",

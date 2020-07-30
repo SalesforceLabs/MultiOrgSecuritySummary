@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Security_Health_Check_Org__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Security Health Check Org</label>
+    <referenceTo>Security_Health_Check_Org__c</referenceTo>
+    <relationshipLabel>Security Health Checks</relationshipLabel>
+    <relationshipName>Security_Health_Checks</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

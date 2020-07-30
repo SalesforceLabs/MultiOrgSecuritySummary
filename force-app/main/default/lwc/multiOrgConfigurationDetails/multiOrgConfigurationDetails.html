@@ -1,12 +1,30 @@
 <template>
-  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+  <section
+    role="dialog"
+    tabindex="-1"
+    aria-labelledby="modal-heading-01"
+    aria-modal="true"
+    aria-describedby="modal-content-id-1"
+    class="slds-modal slds-fade-in-open"
+  >
     <div class="slds-modal__container">
       <header class="slds-modal__header">
-        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-          <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+        <button
+          class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+          title="Close"
+          onclick={closeModal}
+        >
+          <lightning-icon
+            icon-name="utility:close"
+            alternative-text="close"
+            variant="inverse"
+            size="small"
+          ></lightning-icon>
           <span class="slds-assistive-text">Close</span>
         </button>
-        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Org Configuration Details</h2>
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+          Org Configuration Details
+        </h2>
       </header>
       <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
         <div class="slds-grid slds-wrap">
@@ -22,12 +40,12 @@
           </template>
           <template if:true={orgConfiguration}>
             <div class="slds-size--1-of-1">
-              <template if:true={orgConfiguration.OrgConfiguration.multioss__Is_this_the_Central_org__c}>
+              <template if:true={orgConfiguration.OrgConfiguration.Is_this_the_Central_org__c}>
                 <div class="slds-text-align--center slds-text-body--regular">
                   This is the Security Health Check Parent Org
                 </div>
               </template>
-              <template if:false={orgConfiguration.OrgConfiguration.multioss__Is_this_the_Central_org__c}>
+              <template if:false={orgConfiguration.OrgConfiguration.Is_this_the_Central_org__c}>
                 <div class="slds-text-align--center slds-text-body--regular">
                   This is a Security Health Check Child Org
                 </div>
@@ -36,15 +54,23 @@
             <div class="slds-size--1-of-1">
               <div class="slds-section slds-is-open">
                 <h3 class="slds-section__title slds-theme_shade">
-                  <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Organization Details</span>
+                  <span class="slds-truncate slds-p-horizontal_small" title="Section Title"
+                    >Organization Details</span
+                  >
                 </h3>
                 <div aria-hidden="false" class="slds-section__content">
                   <div class="slds-form">
                     <div class="slds-form__row">
                       <div class="slds-form__item">
-                        <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <div
+                          class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                        >
                           <div class="slds-form-element__label">
-                            Org Id <lightning-helptext class="multioss-helptext slds-p-left--xx-small" content="This is the Id attached to this Salesforce Org"></lightning-helptext>
+                            Org Id
+                            <lightning-helptext
+                              class="multioss-helptext slds-p-left--xx-small"
+                              content="This is the Id attached to this Salesforce Org"
+                            ></lightning-helptext>
                           </div>
                           <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
@@ -56,9 +82,15 @@
                     </div>
                     <div class="slds-form__row">
                       <div class="slds-form__item">
-                        <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <div
+                          class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                        >
                           <div class="slds-form-element__label">
-                            Org Name <lightning-helptext class="multioss-helptext slds-p-left--xx-small" content="This is the Official Name attached to this Salesforce Org"></lightning-helptext>
+                            Org Name
+                            <lightning-helptext
+                              class="multioss-helptext slds-p-left--xx-small"
+                              content="This is the Official Name attached to this Salesforce Org"
+                            ></lightning-helptext>
                           </div>
                           <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
@@ -75,13 +107,17 @@
             <div class="slds-size--1-of-1 slds-p-bottom--small">
               <div class="slds-section slds-is-open">
                 <h3 class="slds-section__title slds-theme_shade">
-                  <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Security Configuration</span>
+                  <span class="slds-truncate slds-p-horizontal_small" title="Section Title"
+                    >Security Configuration</span
+                  >
                 </h3>
                 <div aria-hidden="false" class="slds-section__content">
                   <div class="slds-form">
                     <div class="slds-form__row">
                       <div class="slds-form__item">
-                        <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <div
+                          class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                        >
                           <div class="slds-form-element__label">
                             Org Configuration Name
                             <lightning-helptext
@@ -99,14 +135,19 @@
                     </div>
                     <div class="slds-form__row">
                       <div class="slds-form__item">
-                        <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <div
+                          class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                        >
                           <div class="slds-form-element__label">
                             Org Description
-                            <lightning-helptext class="multioss-helptext slds-p-left--xx-small" content="This is the description you have given for your Salesforce Org"></lightning-helptext>
+                            <lightning-helptext
+                              class="multioss-helptext slds-p-left--xx-small"
+                              content="This is the description you have given for your Salesforce Org"
+                            ></lightning-helptext>
                           </div>
                           <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                              {orgConfiguration.OrgOverview.multioss__Description__c}
+                              {orgConfiguration.OrgOverview.Description__c}
                             </div>
                           </div>
                         </div>
@@ -114,14 +155,19 @@
                     </div>
                     <div class="slds-form__row">
                       <div class="slds-form__item">
-                        <div class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                        <div
+                          class="slds-form-element slds-form-element_readonly slds-form-element_stacked slds-hint-parent"
+                        >
                           <div class="slds-form-element__label">
                             Org Sync Token
-                            <lightning-helptext class="multioss-helptext slds-p-left--xx-small" content="This token is required to sync this org to the Parent Security org."></lightning-helptext>
+                            <lightning-helptext
+                              class="multioss-helptext slds-p-left--xx-small"
+                              content="This token is required to sync this org to the Parent Security org."
+                            ></lightning-helptext>
                           </div>
                           <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                              {orgConfiguration.OrgConfiguration.multioss__Token__c}
+                              {orgConfiguration.OrgConfiguration.Token__c}
                             </div>
                           </div>
                         </div>
@@ -135,16 +181,43 @@
               <p class="slds-text-body--regular slds-p-bottom--small">Manage Configuration</p>
             </div>
             <div class="slds-size--1-of-1 slds-align--absolute-center">
-              <lightning-button class="slds-p-right--small" label="Org Information" data-id={orgConfiguration.OrgInfo.Id} variant="neutral" onclick={navigateToOrg}></lightning-button>
-              <lightning-button label="Org Configuration" data-id={orgConfiguration.OrgOverview.Id} variant="neutral" onclick={navigateToOrg}></lightning-button>
-              <lightning-button class="slds-p-left--small" label="App Configuration" data-id={orgConfiguration.OrgConfiguration.Id} variant="neutral" onclick={navigateToOrg}></lightning-button>
-              <lightning-button class="slds-p-left--small" label="Manage Sync" variant="neutral" onclick={manageSync}></lightning-button>
+              <lightning-button
+                class="slds-p-right--small"
+                label="Org Information"
+                data-id={orgConfiguration.OrgInfo.Id}
+                variant="neutral"
+                onclick={navigateToOrg}
+              ></lightning-button>
+              <lightning-button
+                label="Org Configuration"
+                data-id={orgConfiguration.OrgOverview.Id}
+                variant="neutral"
+                onclick={navigateToOrg}
+              ></lightning-button>
+              <lightning-button
+                class="slds-p-left--small"
+                label="App Configuration"
+                data-id={orgConfiguration.OrgConfiguration.Id}
+                variant="neutral"
+                onclick={navigateToOrg}
+              ></lightning-button>
+              <lightning-button
+                class="slds-p-left--small"
+                label="Manage Sync"
+                variant="neutral"
+                onclick={manageSync}
+              ></lightning-button>
             </div>
           </template>
         </div>
       </div>
       <footer class="slds-modal__footer">
-        <lightning-button class="slds-p-right--small" label="Close" variant="neutral" onclick={closeModal}></lightning-button>
+        <lightning-button
+          class="slds-p-right--small"
+          label="Close"
+          variant="neutral"
+          onclick={closeModal}
+        ></lightning-button>
       </footer>
     </div>
   </section>

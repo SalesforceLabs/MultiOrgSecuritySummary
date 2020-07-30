@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Low</fullName>
+        <default>true</default>
+        <label>Low</label>
+    </customValue>
+    <customValue>
+        <fullName>Medium</fullName>
+        <default>false</default>
+        <label>Medium</label>
+    </customValue>
+    <customValue>
+        <fullName>High</fullName>
+        <default>false</default>
+        <label>High</label>
+    </customValue>
+    <description>Used to allocate the severity of a Security Task</description>
+    <masterLabel>Security Health Check Task Severity</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

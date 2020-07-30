@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trailblazer_me_Profile__c</fullName>
+    <deprecated>false</deprecated>
+    <description>A link to a users Trailblazer.me Profile</description>
+    <externalId>false</externalId>
+    <label>Trailblazer.me Profile</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Url</type>
+</CustomField>

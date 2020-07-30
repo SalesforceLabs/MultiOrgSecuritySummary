@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <description>Let the admin know when a security score has dropped!</description>
+        <name>Security_Score_has_Dropped</name>
+        <label>Security Score has Dropped</label>
+        <locationX>637</locationX>
+        <locationY>52</locationY>
+        <defaultConnector>
+            <targetReference>Security_Score_Lower_than_60</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Score_is_Lower</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Security_Health_Check_Record.Score__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference
+          >Get_Security_Health_Check_Record.Previous_Score__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Security_Task_for_Lower_Score</targetReference>
+            </connector>
+            <label>Score is Lower</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Congratulate an Admin on Improving their Score.</description>
+        <name>Security_Score_has_Improved</name>
+        <label>Security Score has Improved</label>
+        <locationX>1175</locationX>
+        <locationY>57</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Score_has_Improved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Security_Health_Check_Record.Change__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BETTER</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Score_Improved_Notification</targetReference>
+            </connector>
+            <label>Score has Improved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>A security score is lower than 60</description>
+        <name>Security_Score_Lower_than_60</name>
+        <label>Security Score Lower than 60</label>
+        <locationX>908</locationX>
+        <locationY>56</locationY>
+        <defaultConnector>
+            <targetReference>Security_Score_has_Improved</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Score_is_Lower_than_60</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Security_Health_Check_Record.Score__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>60.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Security_Task_for_Score_below_60</targetReference>
+            </connector>
+            <label>Score is Lower than 60</label>
+        </rules>
+    </decisions>
+    <description
+  >A flow used to evaluate when to send users notifications about events consumed via Security Health Checks</description>
+    <formulas>
+        <name>OneWeekFromToday</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate}+7</expression>
+    </formulas>
+    <interviewLabel
+  >Security Health Check Result Evaluation {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Security Health Check Result Evaluation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create a task</description>
+        <name>Create_Security_Task_for_Lower_Score</name>
+        <label>Create Security Task for Lower Score</label>
+        <locationX>646</locationX>
+        <locationY>294</locationY>
+        <connector>
+            <targetReference>Send_Low_Score_App_Notification</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Assigned_To__c</field>
+            <value>
+                <elementReference
+        >Get_Security_Org_Definition.Point_of_Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description__c</field>
+            <value>
+                <stringValue
+        >Can you please review any changes that occurred with this org since yesterday - we can&#39;t let our standards drop!</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Due_Date__c</field>
+            <value>
+                <elementReference>OneWeekFromToday</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Related_To_Org__c</field>
+            <value>
+                <elementReference>Get_Security_Org_Definition.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Created</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Title__c</field>
+            <value>
+                <stringValue>Score has dropped lower than previously recorded</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Security_Health_Check_Task__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Create a task</description>
+        <name>Create_Security_Task_for_Score_below_60</name>
+        <label>Create Security Task for Score below 60</label>
+        <locationX>927</locationX>
+        <locationY>304</locationY>
+        <connector>
+            <targetReference>Send_Below_60_Email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Assigned_To__c</field>
+            <value>
+                <elementReference
+        >Get_Security_Org_Definition.Point_of_Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description__c</field>
+            <value>
+                <stringValue
+        >This security score has dropped below 60! Please address this asap.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Due_Date__c</field>
+            <value>
+                <elementReference>OneWeekFromToday</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Related_To_Org__c</field>
+            <value>
+                <elementReference>Get_Security_Org_Definition.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Created</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Title__c</field>
+            <value>
+                <stringValue>Security Score has dropped below 60</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Security_Health_Check_Task__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get the security health check record that kicked off the process.</description>
+        <name>Get_Security_Health_Check_Record</name>
+        <label>Get Security Health Check Record</label>
+        <locationX>251</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Security_Org_Definition</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>securityHealthCheckId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Security_Health_Check__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description
+    >Get the details about the org that is related to the security health check.</description>
+        <name>Get_Security_Org_Definition</name>
+        <label>Get Security Org Definition</label>
+        <locationX>424</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Security_Score_has_Dropped</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference
+        >Get_Security_Health_Check_Record.Security_Health_Check_Org__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Security_Health_Check_Org__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Get_Security_Health_Check_Record</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <subflows>
+        <description>Send an email with the score drops below 60</description>
+        <name>Send_Below_60_Email</name>
+        <label>Send Below 60 Email</label>
+        <locationX>925</locationX>
+        <locationY>480</locationY>
+        <connector>
+            <targetReference>Send_Score_Below_60_Notification</targetReference>
+        </connector>
+        <flowName>Security_Health_Check_Notification_Service</flowName>
+        <inputAssignments>
+            <name>Email</name>
+            <value>
+                <elementReference
+        >Get_Security_Org_Definition.Point_of_Contact__r.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Message</name>
+            <value>
+                <stringValue
+        >This security score has dropped below 60! Please address this asap.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Subject</name>
+            <value>
+                <stringValue>Security Score has dropped below 60</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Type</name>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Let the user know a score has dropped way too low!</description>
+        <name>Send_Low_Score_App_Notification</name>
+        <label>Send Low Score App Notification</label>
+        <locationX>644</locationX>
+        <locationY>468</locationY>
+        <connector>
+            <targetReference>Security_Score_Lower_than_60</targetReference>
+        </connector>
+        <flowName>Security_Health_Check_Notification_Service</flowName>
+        <inputAssignments>
+            <name>Message</name>
+            <value>
+                <stringValue
+        >Can you please review any changes that occurred with this org since yesterday - we can&#39;t let our standards drop!</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>Create_Security_Task_for_Lower_Score</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Subject</name>
+            <value>
+                <stringValue>Score has dropped lower than previously recorded</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Type</name>
+            <value>
+                <stringValue>Notification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>userId</name>
+            <value>
+                <elementReference
+        >Get_Security_Org_Definition.Point_of_Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Let the user know a score has dropped way too low!</description>
+        <name>Send_Score_Below_60_Notification</name>
+        <label>Send Score Below 60 Notification</label>
+        <locationX>934</locationX>
+        <locationY>659</locationY>
+        <connector>
+            <targetReference>Security_Score_has_Improved</targetReference>
+        </connector>
+        <flowName>Security_Health_Check_Notification_Service</flowName>
+        <inputAssignments>
+            <name>Message</name>
+            <value>
+                <stringValue
+        >This security score has dropped below 60! Please address this asap.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>Create_Security_Task_for_Score_below_60</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Subject</name>
+            <value>
+                <stringValue>Security Score has dropped below 60</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Type</name>
+            <value>
+                <stringValue>Notification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>userId</name>
+            <value>
+                <elementReference
+        >Get_Security_Org_Definition.Point_of_Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>Let the user know a score has dropped way too low!</description>
+        <name>Send_Score_Improved_Notification</name>
+        <label>Send Score Improved Notification</label>
+        <locationX>1193</locationX>
+        <locationY>329</locationY>
+        <flowName>Security_Health_Check_Notification_Service</flowName>
+        <inputAssignments>
+            <name>Message</name>
+            <value>
+                <stringValue
+        >Your org security score has improved! Thanks for your hard work.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>Get_Security_Org_Definition.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Subject</name>
+            <value>
+                <stringValue>Security Score Improved</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Type</name>
+            <value>
+                <stringValue>Notification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>userId</name>
+            <value>
+                <elementReference
+        >Get_Security_Org_Definition.Point_of_Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <description>The Id of the security health check that starts the transaction.</description>
+        <name>securityHealthCheckId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

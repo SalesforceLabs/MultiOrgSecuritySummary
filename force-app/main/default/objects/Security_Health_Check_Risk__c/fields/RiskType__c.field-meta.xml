@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RiskType__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>RiskType</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HIGH_RISK</fullName>
+                <default>false</default>
+                <label>HIGH_RISK</label>
+            </value>
+            <value>
+                <fullName>MEDIUM_RISK</fullName>
+                <default>false</default>
+                <label>MEDIUM_RISK</label>
+            </value>
+            <value>
+                <fullName>MEETS_STANDARD</fullName>
+                <default>false</default>
+                <label>MEETS_STANDARD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

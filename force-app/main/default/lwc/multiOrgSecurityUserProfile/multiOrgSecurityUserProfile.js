@@ -39,7 +39,9 @@ export default class MultiOrgSecurityUserProfile extends LightningElement {
 
     for (let key in adminData.SecuritySkills) {
       for (let i in adminData.SecuritySkills[key].Values) {
-        let resourceURL = this.baseStaticResourceURL + adminData.SecuritySkills[key].Values[i].multioss__Image_Path__c.substring(23);
+        let resourceURL =
+          this.baseStaticResourceURL +
+          adminData.SecuritySkills[key].Values[i].Image_Path__c.substring(23);
 
         adminData.SecuritySkills[key].Values[i].resourceURL = resourceURL;
       }
@@ -49,7 +51,10 @@ export default class MultiOrgSecurityUserProfile extends LightningElement {
   }
 
   getAdminSkillsToManage() {
-    getAdminSkillsToManage({ userId: this.securityAdmin.UserInfo.Id, staticResourceUrlString: this.baseStaticResourceURL })
+    getAdminSkillsToManage({
+      userId: this.securityAdmin.UserInfo.Id,
+      staticResourceUrlString: this.baseStaticResourceURL
+    })
       .then((data) => {
         console.log(JSON.stringify(data));
         this.availableSkills = data;

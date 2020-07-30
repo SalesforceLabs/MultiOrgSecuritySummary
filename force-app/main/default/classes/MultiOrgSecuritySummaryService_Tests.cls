@@ -1,7 +1,3 @@
-/**
- * Created by apaterson on 18/04/2020.
- */
-
 @IsTest
 private class MultiOrgSecuritySummaryService_Tests {
   @TestSetup
@@ -15,11 +11,21 @@ private class MultiOrgSecuritySummaryService_Tests {
   static void testGetSummaries() {
     Test.startTest();
     // Get the summaries bydate
-    MultiOrgSecuritySummaryService.MultiOrgSummaries summary1 = MultiOrgSecuritySummaryService.getSummaries('bydate', Date.today(), '123456789012345', 30);
+    MultiOrgSecuritySummaryService.MultiOrgSummaries summary1 = MultiOrgSecuritySummaryService.getSummaries(
+      'bydate',
+      Date.today(),
+      '123456789012345',
+      30
+    );
 
     //  (String format, Date theDate, String orgId, Integer maxRows)
     // Get the summaries byorg
-    MultiOrgSecuritySummaryService.MultiOrgSummaries summary2 = MultiOrgSecuritySummaryService.getSummaries('byorg', Date.today(), '123456789012345', 30);
+    MultiOrgSecuritySummaryService.MultiOrgSummaries summary2 = MultiOrgSecuritySummaryService.getSummaries(
+      'byorg',
+      Date.today(),
+      '123456789012345',
+      30
+    );
 
     Test.stopTest();
 
@@ -31,7 +37,9 @@ private class MultiOrgSecuritySummaryService_Tests {
   static void testSecurityHealthCheckJSONParser() {
     //String json = '{"size" : 1, "totalSize" : 1, "done" : true, "queryLocator" : null, "entityTypeName" : "SecurityHealthCheck", "records" : [ {"attributes" : {"type" : "SecurityHealthCheck", "url" : "/services/data/v47.0/tooling/sobjects/SecurityHealthCheck/0"}, "CustomBaselineId" : "0", "DurableId" : "0","Score" : "61"}]}';
     Test.startTest();
-    SecurityHealthCheckJSONParser result = SecurityHealthCheckJSONParser.parse(securityHealthCheckJSON);
+    SecurityHealthCheckJSONParser result = SecurityHealthCheckJSONParser.parse(
+      securityHealthCheckJSON
+    );
     Test.stopTest();
     //   String json2 = '{"size" : 1, "totalSize" : 1, "done" : true, "queryLocator" : "[]", "entityTypeName" : "SecurityHealthCheck", "records" : [ {"attributes" : {"type" : "SecurityHealthCheck", "url" : "/services/data/v47.0/tooling/sobjects/SecurityHealthCheck/0"}, "CustomBaselineId" : "0", "DurableId" : "0","Score" : "61"}]}';
     //   SecurityHealthCheckJSONParser parse2 = SecurityHealthCheckJSONParser.parse(json2);
@@ -42,7 +50,9 @@ private class MultiOrgSecuritySummaryService_Tests {
   @IsTest
   static void testSecurityHealthCheckRiskJSONParser() {
     Test.startTest();
-    SecurityHealthCheckRiskJSONParser result = SecurityHealthCheckRiskJSONParser.parse(securityHealthCheckRisksJSON);
+    SecurityHealthCheckRiskJSONParser result = SecurityHealthCheckRiskJSONParser.parse(
+      securityHealthCheckRisksJSON
+    );
     Test.stopTest();
 
     System.assert(result.size == 37, 'Risks parsed incorrectly');
@@ -52,10 +62,18 @@ private class MultiOrgSecuritySummaryService_Tests {
   static void createSecurityHealthCheckRisks_positive() {
     Test.startTest();
 
-    List<multioss__Security_Health_Check_Org__c> securityHealthCheckOrgs = [SELECT Id FROM multioss__Security_Health_Check_Org__c LIMIT 1];
-    multioss__Security_Health_Check_Org__c securityHealthCheckOrg = (securityHealthCheckOrgs.size() == 1) ? securityHealthCheckOrgs.get(0) : null;
+    List<Security_Health_Check_Org__c> securityHealthCheckOrgs = [
+      SELECT Id
+      FROM Security_Health_Check_Org__c
+      LIMIT 1
+    ];
+    Security_Health_Check_Org__c securityHealthCheckOrg = (securityHealthCheckOrgs.size() == 1)
+      ? securityHealthCheckOrgs.get(0)
+      : null;
 
-    Map<String, Object> results = MultiOrgSecuritySummaryService.getCurrentOrgDetails(securityHealthCheckOrg.Id);
+    Map<String, Object> results = MultiOrgSecuritySummaryService.getCurrentOrgDetails(
+      securityHealthCheckOrg.Id
+    );
 
     Test.stopTest();
 
@@ -92,7 +110,10 @@ private class MultiOrgSecuritySummaryService_Tests {
 
     Test.startTest();
 
-    List<Map<String, Object>> results = MultiOrgSecuritySummaryService.getAdminSkillsToManage(userId, 'test');
+    List<Map<String, Object>> results = MultiOrgSecuritySummaryService.getAdminSkillsToManage(
+      userId,
+      'test'
+    );
 
     Test.stopTest();
 
@@ -103,7 +124,10 @@ private class MultiOrgSecuritySummaryService_Tests {
   static void getSecurityCheckByOrgWithId_positive() {
     Test.startTest();
 
-    List<MultiOrgSecuritySummaryService.DailyOrgSummary> results = MultiOrgSecuritySummaryService.getSecurityCheckByOrg('', 10);
+    List<MultiOrgSecuritySummaryService.DailyOrgSummary> results = MultiOrgSecuritySummaryService.getSecurityCheckByOrg(
+      '',
+      10
+    );
 
     Test.stopTest();
 
@@ -112,11 +136,20 @@ private class MultiOrgSecuritySummaryService_Tests {
 
   @isTest
   static void getSecurityCheckByOrgWithout_positive() {
-    List<multioss__Security_Health_Check_Org__c> securityHealthCheckOrgs = [SELECT Id FROM multioss__Security_Health_Check_Org__c LIMIT 1];
-    multioss__Security_Health_Check_Org__c securityHealthCheckOrg = (securityHealthCheckOrgs.size() == 1) ? securityHealthCheckOrgs.get(0) : null;
+    List<Security_Health_Check_Org__c> securityHealthCheckOrgs = [
+      SELECT Id
+      FROM Security_Health_Check_Org__c
+      LIMIT 1
+    ];
+    Security_Health_Check_Org__c securityHealthCheckOrg = (securityHealthCheckOrgs.size() == 1)
+      ? securityHealthCheckOrgs.get(0)
+      : null;
     Test.startTest();
 
-    List<MultiOrgSecuritySummaryService.DailyOrgSummary> results = MultiOrgSecuritySummaryService.getSecurityCheckByOrg(securityHealthCheckOrg.Id, 10);
+    List<MultiOrgSecuritySummaryService.DailyOrgSummary> results = MultiOrgSecuritySummaryService.getSecurityCheckByOrg(
+      securityHealthCheckOrg.Id,
+      10
+    );
 
     Test.stopTest();
 

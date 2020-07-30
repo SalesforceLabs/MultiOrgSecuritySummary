@@ -15,7 +15,11 @@
                             <div class="slds-page-header__name">
                               <div class="slds-page-header__name-title">
                                 <h1>
-                                  <span class="slds-page-header__title slds-wrap" title={label.Current_Security_Status}>{label.Current_Security_Status}</span>
+                                  <span
+                                    class="slds-page-header__title slds-wrap"
+                                    title={label.Current_Security_Status}
+                                    >{label.Current_Security_Status}</span
+                                  >
                                 </h1>
                               </div>
                             </div>
@@ -29,13 +33,17 @@
               <div class="slds-size--1-of-1">
                 <div class="slds-grid slds-grid--align-spread">
                   <div class="slds-col slds-size--1-of-1">
-                    <span class="slds-text-body--regular slds-wrap" title="Current Org">{label.Multi_Org_Heading_Body}</span>
+                    <span class="slds-text-body--regular slds-wrap" title="Current Org"
+                      >{label.Multi_Org_Heading_Body}</span
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slds-size--1-of-1 slds-p-bottom--small slds-p-left--small slds-p-right--small">
+          <div
+            class="slds-size--1-of-1 slds-p-bottom--small slds-p-left--small slds-p-right--small"
+          >
             <div class="slds-grid slds-wrap">
               <div class="slds-size--1-of-1 slds-m-bottom--x-small slds-border--bottom">
                 <div class="slds-text-heading--small slds-p-bottom--x-small">
@@ -50,7 +58,9 @@
                         <div class="slds-text-heading--small slds-text-align--center">
                           {label.Multi_Org_Statistics_Production}
                         </div>
-                        <div class="slds-text-heading--small multioss-callout-number slds-text-align--center">
+                        <div
+                          class="slds-text-heading--small multioss-callout-number slds-text-align--center"
+                        >
                           {orgConfiguration.TotalProductionOrgs}
                         </div>
                       </div>
@@ -58,7 +68,9 @@
                         <div class="slds-text-heading--small slds-text-align--center">
                           {label.Multi_Org_Statistics_Sandbox}
                         </div>
-                        <div class="slds-text-heading--small multioss-callout-number slds-text-align--center">
+                        <div
+                          class="slds-text-heading--small multioss-callout-number slds-text-align--center"
+                        >
                           {orgConfiguration.TotalSandboxOrgs}
                         </div>
                       </div>
@@ -66,15 +78,23 @@
                         <div class="slds-grid slds-wrap">
                           <div class="slds-size--1-of-1">
                             <div class="slds-grid slds-grid_align-center">
-                              <div class="slds-col slds-text-heading--small slds-text-align--center">
+                              <div
+                                class="slds-col slds-text-heading--small slds-text-align--center"
+                              >
                                 {label.Multi_Org_Statistics_Average}
                               </div>
-                              <div class="slds-col slds-text-align--center multioss-helptext slds-p-left--xx-small">
-                                <lightning-helptext content={label.Multi_Org_Statistics_Average_Helptext}></lightning-helptext>
+                              <div
+                                class="slds-col slds-text-align--center multioss-helptext slds-p-left--xx-small"
+                              >
+                                <lightning-helptext
+                                  content={label.Multi_Org_Statistics_Average_Helptext}
+                                ></lightning-helptext>
                               </div>
                             </div>
                           </div>
-                          <div class="slds-size--1-of-1 slds-text-heading--small multioss-callout-number slds-text-align--center">
+                          <div
+                            class="slds-size--1-of-1 slds-text-heading--small multioss-callout-number slds-text-align--center"
+                          >
                             {orgConfiguration.AverageSecurityScore}
                           </div>
                         </div>
@@ -83,7 +103,9 @@
                         <div class="slds-text-heading--small slds-text-align--center">
                           {label.Multi_Org_Statistics_Tasks}
                         </div>
-                        <div class="slds-text-heading--small multioss-callout-number slds-text-align--center">
+                        <div
+                          class="slds-text-heading--small multioss-callout-number slds-text-align--center"
+                        >
                           {orgConfiguration.TotalOpenSecurityTasks}
                         </div>
                       </div>
@@ -108,7 +130,11 @@
                               <div class="slds-page-header__name">
                                 <div class="slds-page-header__name-title">
                                   <h1>
-                                    <span class="slds-page-header__title slds-wrap" title="Current Org">{currentOrgDetails.Name}</span>
+                                    <span
+                                      class="slds-page-header__title slds-wrap"
+                                      title="Current Org"
+                                      >{currentOrgDetails.Name}</span
+                                    >
                                   </h1>
                                 </div>
                               </div>
@@ -119,16 +145,22 @@
                       <div class="slds-col">
                         <div class="slds-grid">
                           <div class="slds-col">
-                            <p class="slds-text-body--regular slds-text-align--right slds-p-right--small multioss-sync-label">
+                            <p
+                              class="slds-text-body--regular slds-text-align--right slds-p-right--small multioss-sync-label"
+                            >
                               {label.Child_Org_Sync_Status}
                             </p>
                           </div>
                           <div class="slds-col">
                             <template if:true={currentOrgDetails.Active}>
-                              <span class="slds-badge slds-theme--success">{currentOrgDetails.Status}</span>
+                              <span class="slds-badge slds-theme--success"
+                                >{currentOrgDetails.Status}</span
+                              >
                             </template>
                             <template if:false={currentOrgDetails.Active}>
-                              <span class="slds-badge slds-theme--error">{currentOrgDetails.Status}</span>
+                              <span class="slds-badge slds-theme--error"
+                                >{currentOrgDetails.Status}</span
+                              >
                             </template>
                           </div>
                         </div>
@@ -138,7 +170,11 @@
                   <div class="slds-size--1-of-1">
                     <div class="slds-grid slds-grid--align-spread">
                       <div class="slds-col slds-size--1-of-2">
-                        <span class="slds-text-body--regular slds-wrap" title="Current Org Description">{currentOrgDetails.Description}</span>
+                        <span
+                          class="slds-text-body--regular slds-wrap"
+                          title="Current Org Description"
+                          >{currentOrgDetails.Description}</span
+                        >
                       </div>
                       <div class="slds-col slds-size--1-of-2">
                         <div class="slds-grid slds-grid--align-end">
@@ -174,7 +210,11 @@
                               <div class="slds-page-header__name">
                                 <div class="slds-page-header__name-title">
                                   <h1>
-                                    <span class="slds-page-header__title slds-wrap" title="Current Org">{currentOrgDetails.Name}</span>
+                                    <span
+                                      class="slds-page-header__title slds-wrap"
+                                      title="Current Org"
+                                      >{currentOrgDetails.Name}</span
+                                    >
                                   </h1>
                                 </div>
                               </div>
@@ -188,7 +228,9 @@
                 <div class="slds-size--1-of-1">
                   <div class="slds-grid slds-grid--align-spread">
                     <div class="slds-col slds-size--1-of-2">
-                      <span class="slds-text-body--regular slds-wrap" title="Current Org">{currentOrgDetails.Description}</span>
+                      <span class="slds-text-body--regular slds-wrap" title="Current Org"
+                        >{currentOrgDetails.Description}</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -206,18 +248,43 @@
                 <div class="slds-grid slds-wrap">
                   <div class="slds-size--1-of-2 multioss-half-section-border">
                     <dl class="slds-list_horizontal slds-wrap">
-                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Org Id">{label.Single_Org_Details_Org_Id}</dt>
-                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.Id}>{currentOrgDetails.Id}</dd>
-                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">{label.Single_Org_Details_Category}</dt>
+                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Org Id">
+                        {label.Single_Org_Details_Org_Id}
+                      </dt>
+                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.Id}>
+                        {currentOrgDetails.Id}
+                      </dd>
+                      <dt
+                        class="slds-item_label slds-text-color_weak slds-truncate"
+                        title="Second Label"
+                      >
+                        {label.Single_Org_Details_Category}
+                      </dt>
                       <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.Category}>
                         {currentOrgDetails.Category}
                       </dd>
-                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Data Classification">{label.Single_Org_Details_Classification}</dt>
-                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.DataClassification}>
+                      <dt
+                        class="slds-item_label slds-text-color_weak slds-truncate"
+                        title="Data Classification"
+                      >
+                        {label.Single_Org_Details_Classification}
+                      </dt>
+                      <dd
+                        class="slds-item_detail slds-truncate"
+                        title={currentOrgDetails.DataClassification}
+                      >
                         {currentOrgDetails.DataClassification}
                       </dd>
-                      <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Data Classification">{label.Single_Org_Details_Admin}</dt>
-                      <dd class="slds-item_detail slds-truncate" title={currentOrgDetails.SecurityAdmin}>
+                      <dt
+                        class="slds-item_label slds-text-color_weak slds-truncate"
+                        title="Data Classification"
+                      >
+                        {label.Single_Org_Details_Admin}
+                      </dt>
+                      <dd
+                        class="slds-item_detail slds-truncate"
+                        title={currentOrgDetails.SecurityAdmin}
+                      >
                         {currentOrgDetails.SecurityAdmin}
                       </dd>
                     </dl>
@@ -233,7 +300,8 @@
                         </div>
                         <template if:true={currentDateSet}>
                           <div class="slds-text-body--small slds-text-align--center">
-                            {currentOrgDetails.LatestHealthCheckDate} {label.Single_Org_Statistics_Days_Ago}
+                            {currentOrgDetails.LatestHealthCheckDate}
+                            {label.Single_Org_Statistics_Days_Ago}
                           </div>
                         </template>
                         <template if:false={currentDateSet}>
@@ -270,7 +338,11 @@
                             <div class="slds-page-header__name">
                               <div class="slds-page-header__name-title">
                                 <h1>
-                                  <span class="slds-page-header__title slds-wrap" title={label.Multi_Org_Daily_Security_Summary_Title}>{label.Multi_Org_Daily_Security_Summary_Title}</span>
+                                  <span
+                                    class="slds-page-header__title slds-wrap"
+                                    title={label.Multi_Org_Daily_Security_Summary_Title}
+                                    >{label.Multi_Org_Daily_Security_Summary_Title}</span
+                                  >
                                 </h1>
                               </div>
                             </div>
@@ -284,7 +356,9 @@
               <div class="slds-size--1-of-1">
                 <div class="slds-grid slds-grid--align-spread">
                   <div class="slds-col slds-size--1-of-2">
-                    <span class="slds-text-body--regular slds-wrap" title="Current Org">{label.Multi_Org_Daily_Security_Summary_Description}</span>
+                    <span class="slds-text-body--regular slds-wrap" title="Current Org"
+                      >{label.Multi_Org_Daily_Security_Summary_Description}</span
+                    >
                   </div>
                 </div>
               </div>

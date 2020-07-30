@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Central_Org_URL__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText
+  >The endpoint URI to send data to (Please only enter the part after the host name)
+This is captured separately to the named credential as the URL for anonymous services is different to authenticated services.</inlineHelpText>
+    <label>Central Org URL</label>
+    <length>255</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

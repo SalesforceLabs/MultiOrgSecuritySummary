@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_that_ID_exist_before_activating</fullName>
+    <active>true</active>
+    <description
+  >Need to ensure that theOrg Id is at least 15 chars before allowing record to be active</description>
+    <errorConditionFormula
+  >Active__c = TRUE &amp;&amp;  LEN( Organization_Id__c )&lt;15</errorConditionFormula>
+    <errorMessage>Org Record cannot be made active without a valid Organisation Id</errorMessage>
+</ValidationRule>

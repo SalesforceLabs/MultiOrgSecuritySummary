@@ -11,7 +11,10 @@
       <template if:false={securityAdmin}>
         <div class="slds-size--1-of-1 slds-align--absolute-center">
           <div class="slds-p-around--medium">
-            <c-svg-provider svgname="gonefishing" message="An Admin has not been associated to this Org"></c-svg-provider>
+            <c-svg-provider
+              svgname="gonefishing"
+              message="An Admin has not been associated to this Org"
+            ></c-svg-provider>
           </div>
         </div>
       </template>
@@ -21,10 +24,20 @@
             <div class="slds-size--1-of-1">
               <div class="slds-card slds-card_boundary slds-p-around--small">
                 <div class="slds-grid">
-                  <div class="slds-size--1-of-4 slds-small-size--1-of-4 slds-medium-size--1-of-5 slds-large-size--1-of-6 slds-align--absolute-center">
-                    <img data-aura-rendered-by="12:914;a" src={securityAdmin.UserInfo.FullPhotoUrl} class="multioss-user-profile-image" alt="" title="" />
+                  <div
+                    class="slds-size--1-of-4 slds-small-size--1-of-4 slds-medium-size--1-of-5 slds-large-size--1-of-6 slds-align--absolute-center"
+                  >
+                    <img
+                      data-aura-rendered-by="12:914;a"
+                      src={securityAdmin.UserInfo.FullPhotoUrl}
+                      class="multioss-user-profile-image"
+                      alt=""
+                      title=""
+                    />
                   </div>
-                  <div class="slds-size--3-of-4 slds-small-size--3-of-4 slds-medium-size--4-of-5 slds-large-size--5-of-6">
+                  <div
+                    class="slds-size--3-of-4 slds-small-size--3-of-4 slds-medium-size--4-of-5 slds-large-size--5-of-6"
+                  >
                     <div class="slds-p-left--x-small slds-grid slds-wrap">
                       <div class="slds-size--1-of-2 slds-grid--align-spread.">
                         <div class="slds-text-heading--small">
@@ -36,22 +49,33 @@
                         <div class="slds-text-body--regular">
                           {securityAdmin.UserInfo.Country}
                         </div>
-                        <template if:true={securityAdmin.UserInfo.multioss__Trailblazer_me_Profile__c}>
+                        <template if:true={securityAdmin.UserInfo.Trailblazer_me_Profile__c}>
                           <div class="slds-text-body--regular">
-                            <a onclick={viewLink} data-id={securityAdmin.UserInfo.multioss__Trailblazer_me_Profile__c}>Trailblazer.me Profile</a>
+                            <a
+                              onclick={viewLink}
+                              data-id={securityAdmin.UserInfo.Trailblazer_me_Profile__c}
+                              >Trailblazer.me Profile</a
+                            >
                           </div>
                         </template>
                       </div>
                       <div class="slds-size--1-of-2 slds-grid--align-end">
                         <template if:true={securitySuperstar}>
                           <div class="slds-badge slds-theme--success slds-float_right">
-                            <lightning-icon class="slds-p-right--xx-small" icon-name="utility:topic" size="xx-small" variant="inverse"></lightning-icon>
+                            <lightning-icon
+                              class="slds-p-right--xx-small"
+                              icon-name="utility:topic"
+                              size="xx-small"
+                              variant="inverse"
+                            ></lightning-icon>
                             Security Superstar
                           </div>
                         </template>
                       </div>
                       <div class="slds-size--1-of-1">
-                        <lightning-formatted-rich-text value={securityAdmin.UserInfo.AboutMe}></lightning-formatted-rich-text>
+                        <lightning-formatted-rich-text
+                          value={securityAdmin.UserInfo.AboutMe}
+                        ></lightning-formatted-rich-text>
                       </div>
                     </div>
                   </div>
@@ -69,7 +93,11 @@
                 </div>
               </div>
               <div class="slds-col">
-                <lightning-button label="Manage Skills" title="Manage Skills" onclick={showSkills}></lightning-button>
+                <lightning-button
+                  label="Manage Skills"
+                  title="Manage Skills"
+                  onclick={showSkills}
+                ></lightning-button>
               </div>
             </div>
           </div>
@@ -77,7 +105,10 @@
         <template if:false={showAdminSkills}>
           <div class="slds-size--1-of-1 slds-align--absolute-center">
             <div class="slds-p-around--medium">
-              <c-svg-provider svgname="gonefishing" message="This Admin has not added any Skills to their Profile"></c-svg-provider>
+              <c-svg-provider
+                svgname="gonefishing"
+                message="This Admin has not added any Skills to their Profile"
+              ></c-svg-provider>
             </div>
           </div>
         </template>
@@ -116,27 +147,32 @@
                         <tr class="slds-hint-parent" key={skill.Id}>
                           <th data-label="Course Logo" scope="row">
                             <div title={skill.Name}>
-                              <img class="slds-align--absolute-center" src={skill.resourceURL} title={skill.Name} style="max-height: 40px;" />
+                              <img
+                                class="slds-align--absolute-center"
+                                src={skill.resourceURL}
+                                title={skill.Name}
+                                style="max-height: 40px;"
+                              />
                             </div>
                           </th>
                           <td data-label="Name" class="slds-cell-wrap">
-                            <div class="slds-wrap" title={skill.multioss__Course_Name__c}>
-                              {skill.multioss__Course_Name__c}
+                            <div class="slds-wrap" title={skill.Course_Name__c}>
+                              {skill.Course_Name__c}
                             </div>
                           </td>
                           <td data-label="Skill Level" class="slds-cell-wrap">
-                            <div class="slds-wrap" title={skill.multioss__Description__c}>
-                              {skill.multioss__Description__c}
+                            <div class="slds-wrap" title={skill.Description__c}>
+                              {skill.Description__c}
                             </div>
                           </td>
                           <td data-label="Description" class="slds-cell-wrap">
-                            <div class="slds-wrap" title={skill.multioss__Skill_Level__c}>
-                              {skill.multioss__Skill_Level__c}
+                            <div class="slds-wrap" title={skill.Skill_Level__c}>
+                              {skill.Skill_Level__c}
                             </div>
                           </td>
                           <td data-label="Link" class="slds-cell-wrap">
-                            <div class="slds-wrap" title={skill.multioss__Course_Name__c}>
-                              <a onclick={viewLink} data-id={skill.multioss__Link__c}>View Course</a>
+                            <div class="slds-wrap" title={skill.Course_Name__c}>
+                              <a onclick={viewLink} data-id={skill.Link__c}>View Course</a>
                             </div>
                           </td>
                         </tr>
@@ -152,6 +188,11 @@
     </template>
   </div>
   <template if:true={showUserSkillsModal}>
-    <c-multi-org-security-user-skills record-id={recordId} available-skills={availableSkills} security-admin={securityAdmin} oncloseskillmodal={closeModal}></c-multi-org-security-user-skills>
+    <c-multi-org-security-user-skills
+      record-id={recordId}
+      available-skills={availableSkills}
+      security-admin={securityAdmin}
+      oncloseskillmodal={closeModal}
+    ></c-multi-org-security-user-skills>
   </template>
 </template>

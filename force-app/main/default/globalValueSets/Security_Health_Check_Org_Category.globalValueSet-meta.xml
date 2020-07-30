@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Production</fullName>
+        <default>false</default>
+        <label>Production</label>
+    </customValue>
+    <customValue>
+        <fullName>Sandbox</fullName>
+        <default>false</default>
+        <label>Sandbox</label>
+    </customValue>
+    <description>Used to categorise Orgs for Reporting purposes</description>
+    <masterLabel>Security Health Check Org Category</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

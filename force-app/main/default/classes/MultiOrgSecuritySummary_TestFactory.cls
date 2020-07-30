@@ -3,7 +3,7 @@ public with sharing class MultiOrgSecuritySummary_TestFactory {
   public static void setUpDefaultThisOrgData(Date dt) {
     createDailyOrgSummary(dt);
     createSecurityHealthCheckOrgWithId(dt);
-    multioss__Security_Skill__c securitySkill = createSecuritySkill();
+    Security_Skill__c securitySkill = createSecuritySkill();
     createAdminSecuritySkill(securitySkill.Id);
   }
 
@@ -17,13 +17,20 @@ public with sharing class MultiOrgSecuritySummary_TestFactory {
   }
 
   public static Security_Health_Check_Org__c createSecurityHealthCheckOrg(Date dt) {
-    List<multioss__Security_Health_Check_Config__mdt> securityHealthCheckConfigs = [SELECT Id, multioss__Token__c FROM multioss__Security_Health_Check_Config__mdt LIMIT 1];
-    multioss__Security_Health_Check_Config__mdt securityHealthCheckConfig = (securityHealthCheckConfigs.size() == 1) ? securityHealthCheckConfigs.get(0) : null;
+    List<Security_Health_Check_Config__mdt> securityHealthCheckConfigs = [
+      SELECT Id, Token__c
+      FROM Security_Health_Check_Config__mdt
+      LIMIT 1
+    ];
+    Security_Health_Check_Config__mdt securityHealthCheckConfig = (securityHealthCheckConfigs.size() ==
+      1)
+      ? securityHealthCheckConfigs.get(0)
+      : null;
 
     Security_Health_Check_Org__c shco = new Security_Health_Check_Org__c();
-    shco.multioss__Organization_Id__c = '1234556789012345';
-    shco.multioss__Token__c = securityHealthCheckConfig.multioss__Token__c;
-    shco.multioss__Refresh_Token__c = false;
+    shco.Organization_Id__c = '1234556789012345';
+    shco.Token__c = securityHealthCheckConfig.Token__c;
+    shco.Refresh_Token__c = false;
     shco.Name = 'Demo Org 1';
     shco.Active__c = true;
     shco.Category__c = 'Production';
@@ -37,8 +44,8 @@ public with sharing class MultiOrgSecuritySummary_TestFactory {
     Organization organization = (organizations.size() == 1) ? organizations.get(0) : null;
 
     Security_Health_Check_Org__c shco = new Security_Health_Check_Org__c();
-    shco.multioss__Organization_Id__c = organization.Id;
-    shco.multioss__Token__c = '12345678';
+    shco.Organization_Id__c = organization.Id;
+    shco.Token__c = '12345678';
     shco.Name = 'Demo Org 1';
     shco.Active__c = true;
     shco.Category__c = 'Production';
@@ -47,7 +54,11 @@ public with sharing class MultiOrgSecuritySummary_TestFactory {
     return shco;
   }
 
-  public static Security_Health_Check__c createSecurityHealthCheckAndRisks(Security_Health_Check_Org__c shco, date dt, String source) {
+  public static Security_Health_Check__c createSecurityHealthCheckAndRisks(
+    Security_Health_Check_Org__c shco,
+    date dt,
+    String source
+  ) {
     Security_Health_Check__c shc = new Security_Health_Check__c();
 
     shc.Check_Date__c = dt;
@@ -82,24 +93,24 @@ public with sharing class MultiOrgSecuritySummary_TestFactory {
     return shc;
   }
 
-  public static multioss__Security_Skill__c createSecuritySkill() {
-    multioss__Security_Skill__c skill = new multioss__Security_Skill__c();
+  public static Security_Skill__c createSecuritySkill() {
+    Security_Skill__c skill = new Security_Skill__c();
 
     skill.Name = 'Test';
-    skill.multioss__Description__c = 'test';
-    skill.multioss__Image_Path__c = 'testimagetestimagetestimagetestimage.png';
-    skill.multioss__Point_Value__c = 10;
+    skill.Description__c = 'test';
+    skill.Image_Path__c = 'testimagetestimagetestimagetestimage.png';
+    skill.Point_Value__c = 10;
 
     insert skill;
 
     return skill;
   }
 
-  public static multioss__Admin_Security_Skill__c createAdminSecuritySkill(Id skillId) {
-    multioss__Admin_Security_Skill__c adminSecuritySkill = new multioss__Admin_Security_Skill__c();
+  public static Admin_Security_Skill__c createAdminSecuritySkill(Id skillId) {
+    Admin_Security_Skill__c adminSecuritySkill = new Admin_Security_Skill__c();
 
-    adminSecuritySkill.multioss__Security_Skill__c = skillId;
-    adminSecuritySkill.multioss__User__c = UserInfo.getUserId();
+    adminSecuritySkill.Security_Skill__c = skillId;
+    adminSecuritySkill.User__c = UserInfo.getUserId();
 
     insert adminSecuritySkill;
 

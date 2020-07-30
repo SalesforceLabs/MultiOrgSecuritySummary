@@ -1,7 +1,3 @@
-/**
- * Created by apaterson on 22/04/2020.
- */
-
 import { LightningElement, api, track } from "lwc";
 
 export default class MultiOrgHeaderRow extends LightningElement {
@@ -55,25 +51,25 @@ export default class MultiOrgHeaderRow extends LightningElement {
   }
   get highRiskStyle() {
     console.log("high is " + this.highRiskCount * (this.itemSize + this.standardPadding));
-    var width = Math.round(this.highRiskCount * (this.itemSize + this.standardPadding));
+    let width = Math.round(this.highRiskCount * (this.itemSize + this.standardPadding));
     return "width:" + width + "px; background-color:red";
   }
 
   get mediumRiskStyle() {
     console.log("medium is " + this.mediumRiskCount * (this.itemSize + this.standardPadding));
-    var width = Math.round(this.mediumRiskCount * (this.itemSize + this.standardPadding));
+    let width = Math.round(this.mediumRiskCount * (this.itemSize + this.standardPadding));
     return "width:" + width + "px; background-color:orange";
   }
 
   get lowRiskStyle() {
     console.log("low is " + this.lowRiskCount * (this.itemSize + this.standardPadding));
-    var width = Math.round(this.lowRiskCount * (this.itemSize + this.standardPadding));
+    let width = Math.round(this.lowRiskCount * (this.itemSize + this.standardPadding));
     return "width:" + width + "px; background-color:green";
   }
 
   get informationalRiskStyle() {
     console.log("info is " + this.informationalRiskCount * (this.itemSize + this.standardPadding));
-    var width = Math.round(this.informationalRiskCount * (this.itemSize + this.standardPadding));
+    let width = Math.round(this.informationalRiskCount * (this.itemSize + this.standardPadding));
     return "width:" + width + "px; background-color:gray";
   }
 }

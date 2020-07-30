@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_this_the_Central_org__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText
+  >Check this box if this is the org that will be managing the central reporting. This controls the version of the Security Health Check App that is shown</inlineHelpText>
+    <label>Is this the Central org?</label>
+    <type>Checkbox</type>
+</CustomField>

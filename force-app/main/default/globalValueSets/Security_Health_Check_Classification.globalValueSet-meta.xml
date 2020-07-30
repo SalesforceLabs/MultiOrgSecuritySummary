@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Public</fullName>
+        <default>true</default>
+        <label>Public</label>
+    </customValue>
+    <customValue>
+        <fullName>Internal</fullName>
+        <default>false</default>
+        <label>Internal</label>
+    </customValue>
+    <customValue>
+        <fullName>Confidential</fullName>
+        <default>false</default>
+        <label>Confidential</label>
+    </customValue>
+    <customValue>
+        <fullName>Restricted</fullName>
+        <default>false</default>
+        <label>Restricted</label>
+    </customValue>
+    <customValue>
+        <fullName>Mission Critical</fullName>
+        <default>false</default>
+        <label>Mission Critical</label>
+    </customValue>
+    <masterLabel>Security Health Check Classification</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
