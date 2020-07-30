@@ -4,7 +4,7 @@ Multi-Org Security Summary gives you the ability to bring all of the Security He
 
 <img src="screenshots/multi-org-security-summary.png" alt="Multi-Org Security Summary"/>
 
-## Installing Communities Social Navigation Menu using a Scratch Org
+## Installing Multi-Org Security Summary using a Scratch Org
 
 1. If you haven't already done so, authorize your hub org and provide it with an alias (**myhuborg** in the command below):
 
