@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <externalId>false</externalId>
     <label>OrgValue</label>
-    <length>100</length>
+    <length>150</length>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>
