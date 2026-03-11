@@ -46,7 +46,7 @@ global with sharing class SecurityHealthCheckService {
   /* Inside the source org, Create the security health check top level record from the returned JSON data. */
   @TestVisible
   private static Id createSecurityHealthCheck(String data) {
-    List<Organization> organizations = [SELECT Id FROM Organization WITH SECURITY_ENFORCED LIMIT 1];
+    List<Organization> organizations = [SELECT Id, Name FROM Organization WITH SECURITY_ENFORCED LIMIT 1];
     Organization organization = (organizations.size() == 1) ? organizations.get(0) : null;
 
     List<Security_Health_Check_Org__c> securityHealthCheckOrgs = [
@@ -64,7 +64,7 @@ global with sharing class SecurityHealthCheckService {
 
     Id securityHealthCheckOrgId;
 
-    if (securityHealthCheckOrgs == null) {
+    if (securityHealthCheckOrgs.isEmpty()) {
       SObject newSecurityHealthCheckOrg = createNewSecurityHealthCheckOrg(
         organization,
         Decimal.valueOf(convertedData.Records[0].Score)
